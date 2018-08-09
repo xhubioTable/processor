@@ -1,0 +1,68 @@
+{
+  "name": "@xhubioTable/processor",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": [
+    "decision-table"
+  ],
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xhubio/table-processor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xhubio/table-processor/issues"
+  },
+  "homepage": "https://github.com/xhubio/table-processor#readme",
+  "scripts": {
+    "build": "npm run src_format && npm run src_lint && babel src -d lib",
+    "src_lint": "eslint src tests",
+    "src_format": "prettier --no-semi --single-quote --trailing-comma es5 --write \"{src,tests}/**/*.js\"",
+    "test_only": "jest",
+    "test": "npm run build && jest -c jest.config.json",
+    "debug": "npm run build && node --inspect-brk ./node_modules/.bin/jest -i --config=./jest.config.json",
+    "prepare": "npm run build"
+  },
+  "contributors": [
+    {
+      "name": "Torsten Link",
+      "email": "torstenlink@gmx.de"
+    }
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "@xhubioTable/data-generator": "0.0.1",
+    "@xhubioTable/file-processor": "^0.0.2",
+    "@xhubioTable/importer-xlsx": "^0.0.6",
+    "assert": "1.4.1",
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.3",
+    "babel-eslint": "8.2.3",
+    "babel-jest": "23.0.1",
+    "babel-plugin-transform-object-rest-spread": "6.26.0",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-polyfill": "6.26.0",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-flow": "6.23.0",
+    "babel-register": "6.26.0",
+    "cz-conventional-changelog": "2.1.0",
+    "eslint": "4.19.1",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-babel": "5.1.0",
+    "jest": "23.0.1",
+    "jest-cli": "22.4.4",
+    "jest-environment-node-debug": "2.0.0",
+    "jsonfile": "4.0.0",
+    "prettier": "1.13.2",
+    "regenerator-runtime": "0.11.1",
+    "semantic-release": "15.5.0"
+  },
+  "dependencies": {
+    "@xhubioTable/logger": "0.0.1",
+    "@xhubioTable/model-decision": "0.0.4",
+    "@xhubioTable/model-matrix": "0.0.3",
+    "chalk": "2.4.1",
+    "clone": "2.1.1",
+    "uuid": "3.2.1"
+  }
+}

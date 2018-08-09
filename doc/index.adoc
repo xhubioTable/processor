@@ -1,0 +1,5 @@
+== Table Processor
+
+include::processor.adoc[]
+
+include::generator_section.adoc[]

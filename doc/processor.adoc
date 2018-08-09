@@ -1,0 +1,28 @@
+The processor takes one table after an other. In each table it looks for executable
+entries. Then it will execute each of these.
+If one of them is a references to an other table than this reference will also be executed.
+
+After one test case is finished it will call all the exporters for this test case.
+
+=== Usage
+
+[source, js]
+----
+import {Processor} from '@xhubio/table-processor'
+
+const opts 0 {
+	generators: {}, <1>
+	exporters: [],  <2>
+	tables: {},     <3>
+}
+
+const processor = new Processor(opts)
+processor.process()
+
+----
+<1> The serviceRegistry which contains all the registered generators. For more
+information see @xhubio/table-data-generator.
+
+<2> A list of exporter. Each exporter gets an object of type TestcaseData. For each test case.
+
+<3> The tables object like it is loaded by the spreadsheet importer

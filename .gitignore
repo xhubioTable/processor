@@ -1,0 +1,8 @@
+lib
+node_modules
+coverage
+jsdoc
+npm-debug.log
+yarn-error.log
+yarn.lock
+package-lock.json
