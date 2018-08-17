@@ -292,7 +292,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
         genInstanceId,
         testcaseData,
         todo,
-        todo.parameter
+        todo.config
       )
       if (data !== undefined) {
         // the instanceId to store the data is the instanceId of the TestcaseData

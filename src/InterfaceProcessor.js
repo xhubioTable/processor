@@ -15,6 +15,14 @@ export default class InterfaceProcessor {
   }
 
   /**
+   * Deletes the loaded tables
+   * and also the data of the generators
+   */
+  clear() {
+    this.tables = {}
+  }
+
+  /**
    * Processes all the tables
    */
   // eslint-disable-next-line no-unused-vars

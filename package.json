@@ -1,6 +1,6 @@
 {
   "name": "@xhubioTable/processor",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "keywords": [
     "decision-table"
@@ -32,13 +32,13 @@
   "license": "ISC",
   "devDependencies": {
     "@xhubioTable/data-generator": "0.0.1",
-    "@xhubioTable/file-processor": "^0.0.2",
+    "@xhubioTable/file-processor": "^0.0.4",
     "@xhubioTable/importer-xlsx": "^0.0.6",
     "assert": "1.4.1",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.3",
-    "babel-eslint": "8.2.3",
-    "babel-jest": "23.0.1",
+    "babel-eslint": "8.2.6",
+    "babel-jest": "23.4.2",
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-plugin-transform-runtime": "6.23.0",
     "babel-polyfill": "6.26.0",
@@ -46,23 +46,23 @@
     "babel-preset-flow": "6.23.0",
     "babel-register": "6.26.0",
     "cz-conventional-changelog": "2.1.0",
-    "eslint": "4.19.1",
-    "eslint-config-prettier": "2.9.0",
+    "eslint": "5.3.0",
+    "eslint-config-prettier": "3.0.1",
     "eslint-plugin-babel": "5.1.0",
-    "jest": "23.0.1",
-    "jest-cli": "22.4.4",
+    "jest": "23.5.0",
+    "jest-cli": "23.5.0",
     "jest-environment-node-debug": "2.0.0",
     "jsonfile": "4.0.0",
-    "prettier": "1.13.2",
-    "regenerator-runtime": "0.11.1",
-    "semantic-release": "15.5.0"
+    "prettier": "1.14.2",
+    "regenerator-runtime": "0.12.1",
+    "semantic-release": "15.9.8"
   },
   "dependencies": {
     "@xhubioTable/logger": "0.0.1",
-    "@xhubioTable/model-decision": "0.0.4",
-    "@xhubioTable/model-matrix": "0.0.3",
+    "@xhubioTable/model-decision": "0.0.5",
+    "@xhubioTable/model-matrix": "0.0.4",
     "chalk": "2.4.1",
-    "clone": "2.1.1",
-    "uuid": "3.2.1"
+    "clone": "2.1.2",
+    "uuid": "3.3.2"
   }
 }
