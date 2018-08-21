@@ -288,12 +288,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
         ? `${todo.node.instanceId} : ${todo.instanceIdSuffix}`
         : todo.node.instanceId
 
-      const data = generator.generate(
-        genInstanceId,
-        testcaseData,
-        todo,
-        todo.config
-      )
+      const data = generator.generate(genInstanceId, testcaseData, todo)
       if (data !== undefined) {
         // the instanceId to store the data is the instanceId of the TestcaseData
         // object.
@@ -310,12 +305,23 @@ export default class TestcaseProcessor extends InterfaceProcessor {
 
         testcaseData.data[tableName][instanceId][fieldName] = data
 
-        // The todo for postprocessing will only be stoted if data was created
-        testcaseData.postProcessTodos.push(todo)
-
         changeCount++
         // delete the entry if the work is done
         generatorTodos[i] = undefined
+
+        // erzeugt die postProcess todos
+        const postProcessTodos = generator.createPostProcessTodos(
+          genInstanceId,
+          testcaseData,
+          todo
+        )
+
+        if (postProcessTodos !== undefined) {
+          for (const postProcessTodo of postProcessTodos) {
+            // The todo for postprocessing will only be stoted if data was created
+            testcaseData.postProcessTodos.push(postProcessTodo)
+          }
+        }
       }
     }
 

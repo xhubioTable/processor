@@ -55,7 +55,6 @@ export function executeTest(testOptions) {
     const table = opts.tables[tableName]
 
     // call the processor
-    debugger
     processor.processTable(table)
 
     // log all the errors

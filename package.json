@@ -1,6 +1,6 @@
 {
   "name": "@xhubioTable/processor",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "",
   "keywords": [
     "decision-table"
@@ -31,9 +31,9 @@
   ],
   "license": "ISC",
   "devDependencies": {
-    "@xhubioTable/data-generator": "0.0.1",
-    "@xhubioTable/file-processor": "^0.0.4",
-    "@xhubioTable/importer-xlsx": "^0.0.6",
+    "@xhubioTable/data-generator": "0.0.2",
+    "@xhubioTable/file-processor": "0.0.5",
+    "@xhubioTable/importer-xlsx": "0.0.6",
     "assert": "1.4.1",
     "babel-cli": "6.26.0",
     "babel-core": "6.26.3",
