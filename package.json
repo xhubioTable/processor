@@ -11,12 +11,12 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xhubio/table-processor.git"
+    "url": "git+https://github.com/xhubioTable/processor.git"
   },
   "bugs": {
-    "url": "https://github.com/xhubio/table-processor/issues"
+    "url": "https://github.com/xhubioTable/processor/issues"
   },
-  "homepage": "https://github.com/xhubio/table-processor#readme",
+  "homepage": "https://github.com/xhubioTable/processor#readme",
   "scripts": {
     "build": "npm run src_format && npm run src_lint && babel src -d lib",
     "src_lint": "eslint src tests",
