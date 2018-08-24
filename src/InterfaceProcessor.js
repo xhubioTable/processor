@@ -1,4 +1,4 @@
-import { getLoggerMemory } from '@xhubioTable/logger'
+import { getLoggerMemory } from '@xhubiotable/logger'
 
 export default class InterfaceProcessor {
   constructor(opts = {}) {

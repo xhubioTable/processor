@@ -1,6 +1,6 @@
 'use strict'
 import assert from 'assert'
-import { DataGeneratorInterface } from '@xhubioTable/data-generator'
+import { DataGeneratorInterface } from '@xhubiotable/data-generator'
 
 /**
  * This generator is only used for the process test.

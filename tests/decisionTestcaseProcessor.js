@@ -3,7 +3,7 @@ import path from 'path'
 // eslint-disable-next-line no-unused-vars
 import jsonfile from 'jsonfile'
 
-import { getLoggerMemory } from '@xhubioTable/logger'
+import { getLoggerMemory } from '@xhubiotable/logger'
 import { createOpts } from './Helper'
 
 /**

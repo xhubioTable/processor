@@ -1,14 +1,14 @@
-import { getLoggerMemory } from '@xhubioTable/logger'
+import { getLoggerMemory } from '@xhubiotable/logger'
 
-import { ImporterXlsx } from '@xhubioTable/importer-xlsx'
+import { ImporterXlsx } from '@xhubiotable/importer-xlsx'
 import {
   FileProcessor,
   ParserMatrix,
   ParserDecision,
   ParserSpecification,
-} from '@xhubioTable/file-processor'
+} from '@xhubiotable/file-processor'
 
-import { GeneratorFaker, TDGServiceRegistry } from '@xhubioTable/data-generator'
+import { GeneratorFaker, TDGServiceRegistry } from '@xhubiotable/data-generator'
 import GeneratorPostProcess from './generator/GeneratorPostProcess'
 import GeneratorMyPerson from './generator/GeneratorMyPerson'
 import GeneratorNoData from './generator/GeneratorNoData'
