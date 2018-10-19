@@ -84,7 +84,7 @@ export default class Reference {
     })
 
     if (recursiv) {
-      const newTarget = this.target.clone()
+      const newTarget = this.target.clone(recursiv)
       newRef.target = newTarget
     }
 

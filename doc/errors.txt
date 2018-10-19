@@ -1,0 +1,43 @@
+- Einführen einer neuen referenz.
+  refRand:<tabellenNamen>::[3-17]
+  Das heist es wird nur eine referenz genommen, nicht alle. Diese wird jedesmal zufällig ausgewählt
+
+- Wenn tabellen referenziert werden, müssen die equivalenzklassen aus allen tabellen eindeutig sein.
+Das sollte nicht der Fall sein. Die Daten müssten doch pro tabelle gespeichert werden.
+Sehr seltsam
+
+- die Möglichkeit parameter für einen generator über mehrere Equivalenzklassen zu verteilen
+  sollte eine Grudfunktionalität werden.
+	z.B: param:<GenaratorName>::<data>
+
+
+
+	  "data": {
+	    "ST Verspätung": {
+	      "e3f071f6-5ffb-4e04-8afc-a0212ef10d94": {
+	        "Event Source": "<Verspaetung:typ:IstProg>",
+	        "Event Time": "Die Planfahrt wurde direkt geändert",
+	        "Qualtiaetsabweichung": "Die Planfahrt wurde direkt geändert",
+	        "Kundengrund": "Die Planfahrt wurde direkt geändert"
+	      }
+	    },
+	    "Verspätung einfache Fahrt": {
+	      "e3f071f6-5ffb-4e04-8afc-a0212ef10d94": {
+	        "Halt": "<Verspaetung:halt:via>",
+	        "EventTime": "<Verspaetung:zeitpunkt:0>",
+	        "TypQA": "<Qualitaetsabweichung:{\"typ\": \"qualitaetsabweichung\"}>",
+	        "HaltQA": "<Qualitaetsabweichung:{\"halt\": 0}>",
+	        "EventTimeQA": "<Qualitaetsabweichung:{\"eventTime\":0}>",
+	        "BezugQA": "<Qualitaetsabweichung:{\"bezug\": \"halt\"}>",
+	        "TypKG": "<Kundengrund:{\"typ\": \"kundengrund\"}>",
+	        "ActionRelation": "<Kundengrund:{\"zeitpunkt\": -10}>",
+	        "BezugKG": "<Kundengrund:{\"bezug\": \"halt\"}>"
+	      }
+	    },
+	  },
+
+Hier ein Beispiel für den obigen Fehler.
+	"EventTime": "<Verspaetung:zeitpunkt:0>",
+	und
+	"EventTimeQA": "<Qualitaetsabweichung:{\"eventTime\":0}>",
+	kommen aus untershiedlichen Tabellenblättern

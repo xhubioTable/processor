@@ -99,7 +99,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
   }
 
   /**
-   * Calls the generator for post prcessing
+   * Calls the generator for post processing
    * @param testcaseData {object} The testcaseData object wich stores all the information of this testcase
    * @return success {boolean} True if the todo is fullfilled
    */
@@ -563,8 +563,8 @@ export default class TestcaseProcessor extends InterfaceProcessor {
 
         for (const refId of refIds) {
           const ref = referenceMap[refId]
-          const newRef = ref.clone()
-          newRef.target = ref.target.clone(true)
+          const newRef = ref.clone(true)
+          // newRef.target = ref.target.clone(true)
           newNode.addReference(newRef)
 
           // The target node always has the same instanecId as the reference
