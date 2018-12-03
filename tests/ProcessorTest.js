@@ -40,7 +40,7 @@ test('postProcessGenerators', async () => {
   }
 
   // call the post processing
-  processor.postProcessGenerators(testcaseData)
+  await processor.postProcessGenerators(testcaseData)
 
   // get the used generator
   const generator = opts.generators.getGenerator('postProcess')

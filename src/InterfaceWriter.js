@@ -8,7 +8,7 @@ export default class InterfaceWriter {
   /**
    * This method will be called before the first testcase will be processed
    */
-  before() {
+  async before() {
     // eslint-disable-next-line no-console
     console.log(`Start a new processing`)
   }
@@ -18,7 +18,7 @@ export default class InterfaceWriter {
    * @param testcaseData {object} The TestcaseData object of the processor
    */
   // eslint-disable-next-line no-unused-vars
-  write(testcaseData) {
+  async write(testcaseData) {
     // eslint-disable-next-line no-console
     console.log(
       `Write testcase '${testcaseData.name}' for table '${
@@ -30,7 +30,7 @@ export default class InterfaceWriter {
   /**
    * This method will be called after the last testcase has been processed
    */
-  after() {
+  async after() {
     // eslint-disable-next-line no-console
     console.log(`End processing`)
   }

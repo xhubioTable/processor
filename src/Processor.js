@@ -24,21 +24,20 @@ export default class TestcaseProcessor extends InterfaceProcessor {
     return true
   }
 
-  process() {
+  async process() {
     // TODO Für alle generatoren die die Daten laden
 
     try {
       // just iterate all the tables
-      Object.keys(this.tables).forEach(tableName => {
-        console.log(`Work on table '${tableName}'`)
+      for (const tableName of Object.keys(this.tables)) {
+        await this.logger.info(`Work on table '${tableName}'`)
         const table = this.tables[tableName]
         table.logger = this.logger
-        this.processTable(table)
-      })
-
+        await this.processTable(table)
+      }
       // TODO Für alle generatoren die die Daten speichern
     } catch (err) {
-      this.logger.error({
+      await this.logger.error({
         message: err.message,
         function: 'process',
         stack: err.stack,
@@ -50,11 +49,11 @@ export default class TestcaseProcessor extends InterfaceProcessor {
    * Processes a single table
    * @param table {object} The table object to be executed
    */
-  processTable(table) {
+  async processTable(table) {
     const gen = table.getTestcasesForExecution()
     try {
       for (const writer of this.writer) {
-        writer.before()
+        await writer.before()
       }
       let obj = gen.next()
       do {
@@ -62,21 +61,27 @@ export default class TestcaseProcessor extends InterfaceProcessor {
           const testcaseDefinition = obj.value
           testcaseDefinition.logger = this.logger
 
-          console.log(`\tWork on test case '${testcaseDefinition.name}'`)
+          await this.logger.info(
+            `\tWork on test case '${testcaseDefinition.name}'`
+          )
           try {
-            const testcaseDataList = this.processTestcase(testcaseDefinition)
-            console.log(`\t\tTest case count '${testcaseDataList.length}'`)
+            const testcaseDataList = await this.processTestcase(
+              testcaseDefinition
+            )
+            await this.logger.info(
+              `\t\tTest case count '${testcaseDataList.length}'`
+            )
 
             for (const tcData of testcaseDataList) {
-              this.postProcessGenerators(tcData)
+              await this.postProcessGenerators(tcData)
               delete tcData.postProcessTodos
 
               for (const writer of this.writer) {
-                writer.write(tcData)
+                await writer.write(tcData)
               }
             }
           } catch (err) {
-            this.logger.error({
+            await this.logger.error({
               message: err.message,
               function: 'process',
               stack: err.stack,
@@ -87,10 +92,10 @@ export default class TestcaseProcessor extends InterfaceProcessor {
       } while (!obj.done)
 
       for (const writer of this.writer) {
-        writer.after()
+        await writer.after()
       }
     } catch (err) {
-      this.logger.error({
+      await this.logger.error({
         message: err.message,
         function: 'process',
         stack: err.stack,
@@ -103,7 +108,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
    * @param testcaseData {object} The testcaseData object wich stores all the information of this testcase
    * @return success {boolean} True if the todo is fullfilled
    */
-  postProcessGenerators(testcaseData) {
+  async postProcessGenerators(testcaseData) {
     const todos = testcaseData.postProcessTodos
 
     // First the todos need to be ordered
@@ -124,7 +129,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
         : testcaseData.instanceId
 
       const generator = this.generatorRegistry.getGenerator(todo.generatorName)
-      generator.postProcess(instanceId, testcaseData, todo, todo.config)
+      await generator.postProcess(instanceId, testcaseData, todo, todo.config)
     }
 
     delete testcaseData.postProcessTodos
@@ -136,8 +141,8 @@ export default class TestcaseProcessor extends InterfaceProcessor {
    * @param testcaseDefinition {object} The Testcase definition to be executed
    * @return testcaseDataList {array} An array TestcaseData Objects
    */
-  processTestcase(testcaseDefinition) {
-    const rootNodeList = this.createNodeTree(testcaseDefinition)
+  async processTestcase(testcaseDefinition) {
+    const rootNodeList = await this.createNodeTree(testcaseDefinition)
 
     const tcList = []
 
@@ -159,7 +164,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
         callTree,
       })
 
-      this._generateData(tcData, node)
+      await this._generateData(tcData, node)
       tcList.push(tcData)
     }
 
@@ -201,7 +206,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
    * @param testcaseData {object} The testcase data object for storing the data
    * @param node {object} The node to create the data for
    */
-  _generateData(testcaseData, node) {
+  async _generateData(testcaseData, node) {
     /**
      * Deletes all the entries of the array which are undefined
      * @param data {array} The array to be cleaned
@@ -229,7 +234,10 @@ export default class TestcaseProcessor extends InterfaceProcessor {
     do {
       changeCount = 0
 
-      changeCount += this._executeGeneratorTodos(testcaseData, todosGenerator)
+      changeCount += await this._executeGeneratorTodos(
+        testcaseData,
+        todosGenerator
+      )
 
       changeCount += this._executeReferenceTodos(testcaseData, todosReference)
       todosReference = cleanArray(todosReference)
@@ -257,7 +265,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
         )
       }
 
-      this.logger.error({
+      await this.logger.error({
         header,
         message: `Could not resolve all the fields`,
         details: data.join('\n'),
@@ -274,7 +282,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
    * @param generatorTodos {array} An array of generator todos
    * @return changeCount {number} The number of succesful generator calls
    */
-  _executeGeneratorTodos(testcaseData, generatorTodos) {
+  async _executeGeneratorTodos(testcaseData, generatorTodos) {
     let changeCount = 0
 
     for (let i = 0; i < generatorTodos.length; i++) {
@@ -288,7 +296,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
         ? `${todo.node.instanceId} : ${todo.instanceIdSuffix}`
         : todo.node.instanceId
 
-      const data = generator.generate(genInstanceId, testcaseData, todo)
+      const data = await generator.generate(genInstanceId, testcaseData, todo)
       if (data !== undefined) {
         // the instanceId to store the data is the instanceId of the TestcaseData
         // object.
@@ -310,7 +318,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
         generatorTodos[i] = undefined
 
         // erzeugt die postProcess todos
-        const postProcessTodos = generator.createPostProcessTodos(
+        const postProcessTodos = await generator.createPostProcessTodos(
           genInstanceId,
           testcaseData,
           todo
@@ -382,7 +390,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
    * @param testcaseDefinition {object} The Testcase definition to be executed
    * @return nodes {array} The new nodes created
    */
-  createNodeTree(testcaseDefinition) {
+  async createNodeTree(testcaseDefinition) {
     const todos = testcaseDefinition.createTodos()
 
     // This is a root node.
@@ -393,7 +401,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
       todos,
     })
 
-    const nodeList = this._explodeNodeReferences(node)
+    const nodeList = await this._explodeNodeReferences(node)
     return nodeList
   }
 
@@ -439,7 +447,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
    * @param node {object} The raw node with the unexpanded references
    * @return nodeList {array} An Array with the nodes created by the references
    */
-  _explodeNodeReferences(node) {
+  async _explodeNodeReferences(node) {
     if (node.todos.reference.length === 0) {
       // if there are no references we just return the node as an array
       return [node]
@@ -462,7 +470,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
       if (targetTable === undefined) {
         // This table does not exists
 
-        this.logger.error({
+        await this.logger.error({
           tableName: node.tableName,
           testcaseName: node.testcaseName,
           message: `The targetTable '${targetTableName}' does not exists`,
@@ -487,7 +495,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
               referenceCmd.instanceIdSuffix !== undefined &&
               referenceCmd.instanceIdSuffix !== ''
             ) {
-              this.logger.error({
+              await this.logger.error({
                 tableName: node.tableName,
                 testcaseName: node.testcaseName,
                 message: `If the reference is a range, the instanceIdSuffix must be null`,
@@ -523,7 +531,9 @@ export default class TestcaseProcessor extends InterfaceProcessor {
               )
               targetTestcaseDefinition.logger = this.logger
 
-              const targetNodes = this.createNodeTree(targetTestcaseDefinition)
+              const targetNodes = await this.createNodeTree(
+                targetTestcaseDefinition
+              )
 
               for (const targetNode of targetNodes) {
                 const newRef = reference.clone()

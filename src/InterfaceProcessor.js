@@ -26,7 +26,7 @@ export default class InterfaceProcessor {
    * Processes all the tables
    */
   // eslint-disable-next-line no-unused-vars
-  process() {
+  async process() {
     throw new Error('Implement this method in the derived class')
   }
 
@@ -36,7 +36,7 @@ export default class InterfaceProcessor {
    * @param table {object} The table model. The table to be processed
    */
   // eslint-disable-next-line no-unused-vars
-  processTable(table) {
+  async processTable(table) {
     throw new Error('Implement this method in the derived class')
   }
 }

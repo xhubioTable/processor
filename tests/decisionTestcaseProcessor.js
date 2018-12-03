@@ -1,8 +1,5 @@
 import path from 'path'
 
-// eslint-disable-next-line no-unused-vars
-import jsonfile from 'jsonfile'
-
 import { getLoggerMemory } from '@xhubiotable/logger'
 import { createOpts } from './Helper'
 
@@ -37,14 +34,19 @@ export function executeTest(testOptions) {
     const result = {}
 
     const writer = {
-      before: () => {},
+      before: () => {
+        return Promise.resolve()
+      },
       write: testcaseData => {
         if (result[testcaseData.tableName] === undefined) {
           result[testcaseData.tableName] = {}
         }
         result[testcaseData.tableName][testcaseData.name] = testcaseData
+        return Promise.resolve()
       },
-      after: () => {},
+      after: () => {
+        return Promise.resolve()
+      },
     }
 
     // get the loaded table models
@@ -55,7 +57,7 @@ export function executeTest(testOptions) {
     const table = opts.tables[tableName]
 
     // call the processor
-    processor.processTable(table)
+    await processor.processTable(table)
 
     // log all the errors
     logger.entries.error.forEach(error => {
