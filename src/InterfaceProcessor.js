@@ -4,8 +4,9 @@ export default class InterfaceProcessor {
   constructor(opts = {}) {
     this.logger = opts.logger || getLoggerMemory()
 
-    // all the available tables
-    this.tables = opts.tables
+    // all the available tables as an Object
+    // key = tableName, value = table
+    this._tables = opts.tables !== undefined ? opts.tables : {}
 
     // This registry contains all the registered generators
     this.generatorRegistry = opts.generatorRegistry
@@ -15,11 +16,29 @@ export default class InterfaceProcessor {
   }
 
   /**
+   * If the given data is an Array it must be converted into an object
+   */
+  set tables(data) {
+    if (Array.isArray(data)) {
+      this._tables = {}
+      for (const table of data) {
+        this._tables[table.name] = table
+      }
+    } else {
+      this._tables = data
+    }
+  }
+
+  get tables() {
+    return this._tables
+  }
+
+  /**
    * Deletes the loaded tables
    * and also the data of the generators
    */
   clear() {
-    this.tables = {}
+    this._tables = {}
   }
 
   /**
