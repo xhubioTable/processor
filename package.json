@@ -59,10 +59,10 @@
   "dependencies": {
     "@babel/runtime": "7.2.0",
     "@xhubiotable/data-generator": "2.0.1",
-    "@xhubiotable/file-processor": "2.0.2",
+    "@xhubiotable/file-processor": "2.0.3",
     "@xhubiotable/importer-xlsx": "2.0.1",
     "@xhubiotable/logger": "2.0.1",
-    "@xhubiotable/model-decision": "2.0.2",
+    "@xhubiotable/model-decision": "2.0.3",
     "@xhubiotable/model-matrix": "2.0.1",
     "chalk": "2.4.1",
     "clone": "2.1.2",
