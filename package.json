@@ -58,7 +58,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.2.0",
-    "@xhubiotable/data-generator": "2.0.1",
+    "@xhubiotable/data-generator": "2.1.0",
     "@xhubiotable/file-processor": "2.0.4",
     "@xhubiotable/importer-xlsx": "2.0.1",
     "@xhubiotable/logger": "2.0.1",

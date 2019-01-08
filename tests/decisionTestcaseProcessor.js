@@ -34,17 +34,17 @@ export function executeTest(testOptions) {
     const result = {}
 
     const writer = {
-      before: () => {
+      before: async () => {
         return Promise.resolve()
       },
-      write: testcaseData => {
+      write: async testcaseData => {
         if (result[testcaseData.tableName] === undefined) {
           result[testcaseData.tableName] = {}
         }
         result[testcaseData.tableName][testcaseData.name] = testcaseData
         return Promise.resolve()
       },
-      after: () => {
+      after: async () => {
         return Promise.resolve()
       },
     }

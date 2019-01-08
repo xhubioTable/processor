@@ -19,13 +19,19 @@ export default class TestcaseProcessor extends InterfaceProcessor {
   /**
    * validate the loaded tables.
    * @return errors {array} An array with all the found errors
+   * @deprecated no longer used
    */
   validate() {
-    return true
+    // @TODO check if this method could be removed
+    return []
   }
 
   async process() {
-    // TODO Für alle generatoren die die Daten laden
+    this.generatorRegistry.loadStore()
+
+    for (const writer of this.writer) {
+      await writer.before()
+    }
 
     try {
       // just iterate all the tables
@@ -43,6 +49,12 @@ export default class TestcaseProcessor extends InterfaceProcessor {
         stack: err.stack,
       })
     }
+
+    for (const writer of this.writer) {
+      await writer.after()
+    }
+
+    this.generatorRegistry.saveStore()
   }
 
   /**
@@ -52,9 +64,6 @@ export default class TestcaseProcessor extends InterfaceProcessor {
   async processTable(table) {
     const gen = table.getTestcasesForExecution()
     try {
-      for (const writer of this.writer) {
-        await writer.before()
-      }
       let obj = gen.next()
       do {
         if (obj.value !== undefined) {
@@ -90,10 +99,6 @@ export default class TestcaseProcessor extends InterfaceProcessor {
         }
         obj = gen.next()
       } while (!obj.done)
-
-      for (const writer of this.writer) {
-        await writer.after()
-      }
     } catch (err) {
       await this.logger.error({
         message: err.message,
@@ -143,12 +148,10 @@ export default class TestcaseProcessor extends InterfaceProcessor {
    */
   async processTestcase(testcaseDefinition) {
     const rootNodeList = await this.createNodeTree(testcaseDefinition)
-
     const tcList = []
 
     for (let i = 0; i < rootNodeList.length; i++) {
       const node = rootNodeList[i]
-
       if (rootNodeList.length > 1) {
         // In this case we need to add a modifier to the test case name
         node.testcaseName = `${testcaseDefinition.name}-${i + 1}`

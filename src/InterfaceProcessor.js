@@ -4,9 +4,11 @@ export default class InterfaceProcessor {
   constructor(opts = {}) {
     this.logger = opts.logger || getLoggerMemory()
 
+    this._tables = {}
+
     // all the available tables as an Object
     // key = tableName, value = table
-    this._tables = opts.tables !== undefined ? opts.tables : {}
+    this.tables = opts.tables !== undefined ? opts.tables : {}
 
     // This registry contains all the registered generators
     this.generatorRegistry = opts.generatorRegistry
@@ -22,6 +24,14 @@ export default class InterfaceProcessor {
     if (Array.isArray(data)) {
       this._tables = {}
       for (const table of data) {
+        if (this._tables[table.name] !== undefined) {
+          this.logger.error({
+            function: 'set tables',
+            message: `The table name '${
+              table.name
+            }' is double. The last table overwrites the previous one`,
+          })
+        }
         this._tables[table.name] = table
       }
     } else {
@@ -46,16 +56,6 @@ export default class InterfaceProcessor {
    */
   // eslint-disable-next-line no-unused-vars
   async process() {
-    throw new Error('Implement this method in the derived class')
-  }
-
-  /**
-   * Processes a single table
-   * @param tables {object} All the existing tables
-   * @param table {object} The table model. The table to be processed
-   */
-  // eslint-disable-next-line no-unused-vars
-  async processTable(table) {
     throw new Error('Implement this method in the derived class')
   }
 }

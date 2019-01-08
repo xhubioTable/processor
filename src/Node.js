@@ -216,7 +216,13 @@ export default class Node {
     if (recursive) {
       for (const fieldName of Object.keys(this.references)) {
         const ref = this.references[fieldName]
-        const newRef = ref.clone(recursive)
+        let newRef
+        if (ref.selfReference) {
+          // A self reference must not be cloned recursive
+          newRef = ref.clone(false)
+        } else {
+          newRef = ref.clone(true)
+        }
         newNode.addReference(newRef)
       }
     }

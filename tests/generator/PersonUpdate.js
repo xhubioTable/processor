@@ -1,12 +1,12 @@
 'use strict'
 import assert from 'assert'
-import { DataGeneratorInterface } from '@xhubiotable/data-generator'
+import { DataGeneratorBase } from '@xhubiotable/data-generator'
 
 /**
  * This generator is only used for the process test.
  * It takes the value from the testcase and build an email out of it
  */
-export default class GeneratorMyPerson extends DataGeneratorInterface {
+export default class GeneratorMyPerson extends DataGeneratorBase {
   /**
    * Generates the value and saves it for the given instance.
    * @param instanceId {string} The testcase instance id. for the same instance id the same data object
@@ -17,15 +17,17 @@ export default class GeneratorMyPerson extends DataGeneratorInterface {
    * then the generator should return 'undefined'. So it could be called later. This may be the case if the generator
    * needs referenced data which is not generated yet.
    */
-  generate(instanceId, testcase, meta, args) {
+  async generate(instanceId, testcase, todoGenerator) {
     assert.ok(instanceId)
     assert.ok(testcase)
     assert.ok(testcase.data)
-    assert.ok(args)
+    assert.ok(todoGenerator)
+    const args = todoGenerator.config
+
     if (instanceId && this.instanceData.has(instanceId + args)) {
       return this.instanceData.get(instanceId + args)
     }
-    const genData = this._doGenerate(instanceId + args, testcase, meta, args)
+    const genData = await this._doGenerate(instanceId + args, testcase, args)
     if (genData !== undefined && instanceId) {
       this.instanceData.set(instanceId + args, genData)
     }
@@ -36,7 +38,9 @@ export default class GeneratorMyPerson extends DataGeneratorInterface {
    * @see  DataGeneratorInterface._doGenerate
    */
   // eslint-disable-next-line no-unused-vars
-  _doGenerate(instanceId, testcase, meta, args) {
+  async _doGenerate(instanceId, testcase, todoGenerator) {
+    const args = todoGenerator.config
+    const meta = todoGenerator.meta
     if (args === undefined) {
       throw new Error({
         message: `If this generator is called, the name of the method must be given.`,

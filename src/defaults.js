@@ -3,7 +3,6 @@
  * These defaults are not usefull for production, but for starting and testing.
  */
 
-
 import util from 'util'
 import fs from 'fs'
 import path from 'path'
