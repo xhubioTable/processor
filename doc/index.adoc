@@ -1,4 +1,4 @@
-== Table Processor
+== Processor
 
 include::processor.adoc[]
 

@@ -4,6 +4,10 @@ If one of them is a references to an other table than this reference will also b
 
 After one test case is finished it will call all the exporters for this test case.
 
+
+image::images/processor/processorOverview.svg[]
+
+
 === Usage
 
 [source, js]
@@ -23,6 +27,6 @@ processor.process()
 <1> The serviceRegistry which contains all the registered generators. For more
 information see @xhubiotable/data-generator.
 
-<2> A list of exporter. Each exporter gets an object of type TestcaseData. For each test case.
+<2> A list of exporter. Each exporter gets an object of type 'TestcaseData'. For each test case.
 
 <3> The tables object like it is loaded by the spreadsheet importer

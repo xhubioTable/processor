@@ -1,0 +1,3 @@
+- Die tests die rausgenommen wurden müssen wieder integriert werden.
+- Für jeden reference typ einen test einbauen.
+- Einen Validator für referenzen einbauen
