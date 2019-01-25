@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="-874 76 954 951" width="954" height="951">
+<svg xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns="http://www.w3.org/2000/svg" viewBox="-874 76 954 951" width="954" height="951">
   <defs>
     <font-face font-family="Helvetica Neue" font-size="16" panose-1="2 0 5 3 0 0 0 2 0 4" units-per-em="1000" underline-position="-100" underline-thickness="50" slope="0" x-height="517" cap-height="714" ascent="951.9958" descent="-212.99744" font-weight="400">
       <font-face-src>
@@ -14,9 +14,9 @@
     </marker>
   </defs>
   <metadata> Produced by OmniGraffle 7.9.4 
-    <dc:date>2019-01-04 17:48:41 +0000</dc:date>
+    <dc:date>2019-01-21 21:59:12 +0000</dc:date>
   </metadata>
-  <g id="RangeReferenceSolved" fill="none" stroke-opacity="1" stroke="none" fill-opacity="1" stroke-dasharray="none">
+  <g id="RangeReferenceSolved" stroke-opacity="1" fill-opacity="1" stroke="none" stroke-dasharray="none" fill="none">
     <title>RangeReferenceSolved</title>
     <g id="RangeReferenceSolved: Layer 1">
       <title>Layer 1</title>
@@ -158,9 +158,9 @@
         </text>
       </g>
       <g id="Graphic_40">
-        <rect x="-119" y="853.1364" width="38.5" height="138" fill="#c0ffff"/>
-        <rect x="-119" y="853.1364" width="38.5" height="138" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-        <text transform="translate(-114 899.1364)" fill="black"/>
+        <rect x="16.25" y="853.1364" width="38.5" height="138" fill="#c0ffff"/>
+        <rect x="16.25" y="853.1364" width="38.5" height="138" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(21.25 899.1364)" fill="black"/>
       </g>
       <g id="Graphic_39">
         <rect x="-254.25" y="853.1364" width="38.5" height="138" fill="#c0ffff"/>
@@ -168,7 +168,7 @@
         <text transform="translate(-249.25 899.1364)" fill="black"/>
       </g>
       <g id="Line_38">
-        <path d="M -718.5 930.6473 C -660.534 955.5083 -482.4528 1026.2727 -333.45455 1026.2727 C -220.33734 1026.2727 -157.2712 985.4868 -125.9129 954.9648" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <path d="M -718.5 932.0983 C -665.6936 958.1457 -510.6419 1026.2727 -333.45455 1026.2727 C -170.20285 1026.2727 -45.368426 968.4406 7.645348 938.9714" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
       <g id="Graphic_37">
         <text transform="translate(-243.5 817.9124)" fill="black">
@@ -176,7 +176,7 @@
         </text>
       </g>
       <g id="Graphic_36">
-        <text transform="translate(-106.75 817.9124)" fill="black">
+        <text transform="translate(28.5 817.9124)" fill="black">
           <tspan font-family="Helvetica Neue" font-size="16" font-weight="400" fill="black" x=".032" y="15">d’</tspan>
         </text>
       </g>

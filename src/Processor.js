@@ -96,8 +96,10 @@ export default class TestcaseProcessor extends InterfaceProcessor {
           } catch (err) {
             await this.logger.error({
               message: err.message,
-              function: 'process',
+              function: 'processTable',
               stack: err.stack,
+              tableName: table.name,
+              testName: testcaseDefinition.name,
             })
           }
         }
@@ -106,8 +108,9 @@ export default class TestcaseProcessor extends InterfaceProcessor {
     } catch (err) {
       await this.logger.error({
         message: err.message,
-        function: 'process',
+        function: 'processTable',
         stack: err.stack,
+        tableName: table.name,
       })
     }
   }
@@ -138,6 +141,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
         : testcaseData.instanceId
 
       const generator = this.generatorRegistry.getGenerator(todo.generatorName)
+
       await generator.postProcess(instanceId, testcaseData, todo, todo.config)
     }
 

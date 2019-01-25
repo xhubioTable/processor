@@ -1,11 +1,11 @@
-=== Generator Command
+== Generator Command
 In the generator section the user defines how to generate the data for a field.
 
 .example from a decision table
 image::images/processor/generator.png[]
 
 
-==== Generator command
+=== Generator command
 The generator is used to generate new data.
 
 ----

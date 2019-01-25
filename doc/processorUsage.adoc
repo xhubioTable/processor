@@ -1,13 +1,3 @@
-The processor takes one table after an other. In each table it looks for executable
-entries. Then it will execute each of these.
-If one of them is a references to an other table than this reference will also be executed.
-
-After one test case is finished it will call all the exporters for this test case.
-
-
-image::images/processor/processorOverview.svg[]
-
-
 === Usage
 
 [source, js]
