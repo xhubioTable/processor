@@ -55,7 +55,7 @@ test('createTodos', async done => {
           meta: undefined,
           tableMeta: {
             fileName:
-              '/Users/torstenlink/Documents/entwicklung/xhubTable/processor/tests/fixtures/decision_table_data_for_model_decision.xls',
+              path.join(FIXTURES, 'decision_table_data_for_model_decision.xls'),
           },
           tableName: 'myTable',
           tableType: 'decision-table',
@@ -74,7 +74,7 @@ test('createTodos', async done => {
           meta: undefined,
           tableMeta: {
             fileName:
-              '/Users/torstenlink/Documents/entwicklung/xhubTable/processor/tests/fixtures/decision_table_data_for_model_decision.xls',
+              path.join(FIXTURES, 'decision_table_data_for_model_decision.xls'),
           },
           tableName: 'myTable',
           tableType: 'decision-table',
@@ -91,7 +91,7 @@ test('createTodos', async done => {
           meta: undefined,
           tableMeta: {
             fileName:
-              '/Users/torstenlink/Documents/entwicklung/xhubTable/processor/tests/fixtures/decision_table_data_for_model_decision.xls',
+              path.join(FIXTURES, 'decision_table_data_for_model_decision.xls'),
           },
           tableName: 'myTable',
           tableType: 'decision-table',
@@ -114,7 +114,7 @@ test('createTodos', async done => {
           meta: undefined,
           tableMeta: {
             fileName:
-              '/Users/torstenlink/Documents/entwicklung/xhubTable/processor/tests/fixtures/decision_table_data_for_model_decision.xls',
+              path.join(FIXTURES, 'decision_table_data_for_model_decision.xls'),
           },
           tableName: 'myTable',
           tableType: 'decision-table',
@@ -133,7 +133,7 @@ test('createTodos', async done => {
           meta: undefined,
           tableMeta: {
             fileName:
-              '/Users/torstenlink/Documents/entwicklung/xhubTable/processor/tests/fixtures/decision_table_data_for_model_decision.xls',
+              path.join(FIXTURES, 'decision_table_data_for_model_decision.xls'),
           },
           tableName: 'myTable',
           tableType: 'decision-table',
