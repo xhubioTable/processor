@@ -1,12 +1,12 @@
 == Reference
-A references points to an other test case in the same table or a different one. Each time a reference is solved
+A references points to another test case in the same table or a different one. Each time a reference is resolved
 a new instance of the referenced test case is created.
-Also a reference can point to a range of test cases. Then for each particular test case in the range also the calling
+A reference can also point to a range of test cases. Then for each particular test case in the range also the calling
 test case will be doubled.
 
 === Syntax of a Reference
 
-The following two pictures showing the syntax of a reference.
+The following two pictures show the syntax of a reference.
 
 image::images/processor/referencesSyntax.svg[]
 

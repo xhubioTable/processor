@@ -17,6 +17,6 @@ processor.process()
 <1> The serviceRegistry which contains all the registered generators. For more
 information see @xhubiotable/data-generator.
 
-<2> A list of exporter. Each exporter gets an object of type 'TestcaseData'. For each test case.
+<2> A list of exporters. Each exporter gets an object of type 'TestcaseData' for each test case.
 
-<3> The tables object like it is loaded by the spreadsheet importer
+<3> The tables object as it is loaded by the spreadsheet importer
