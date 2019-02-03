@@ -16,7 +16,7 @@ A range is enclosed in '[]' brackets. In the example above the reference
 points to the test cases 'tc2', 'tc3' and 'tc4'.
 
 === Self Reference
-A self reference references an other field in the same test case. A good example
+A self reference references another field in the same test case. A good example
 for this is for the second password in a registration dialog.
 There the second password must be the same as the first one.
 
@@ -33,7 +33,7 @@ For a self reference the test case name and the instanceIdSuffix must be undefin
 ----
 ref:::password:
 ----
-Also the table name could be omitted.
+Also the table name can be omitted.
 
 
 === Range Reference
@@ -59,7 +59,7 @@ Reference 2::
 Reference 3::
 	This reference points to the table 'Range2'. As a target test case a range is given 'T3-4'. This means
 	the test cases 'T3' and test case 'T4'. To solve this two instances of test case 'Person:T1' are needed. In the
-	pictures these are name a' and a''. For a range reference the instanceId must be empty.
+	pictures these are named a' and a''. For a range reference the instanceId must be empty.
 
 === Default values in Reference
 
