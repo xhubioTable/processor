@@ -28,7 +28,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
 
   async process() {
     if (this.generatorRegistry.loadStore !== undefined) {
-      this.generatorRegistry.loadStore()
+      await this.generatorRegistry.loadStore()
     }
 
     for (const writer of this.writer) {
@@ -57,7 +57,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
     }
 
     if (this.generatorRegistry.loadStore !== undefined) {
-      this.generatorRegistry.saveStore()
+      await this.generatorRegistry.saveStore()
     }
   }
 
