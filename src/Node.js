@@ -50,6 +50,8 @@ export default class Node {
     this.refCache = {}
 
     this.instanceIdCache = {}
+
+    this.meta = opts.meta
   }
 
   /**

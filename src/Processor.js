@@ -307,7 +307,19 @@ export default class TestcaseProcessor extends InterfaceProcessor {
         ? `${todo.node.instanceId} : ${todo.instanceIdSuffix}`
         : todo.node.instanceId
 
-      const data = await generator.generate(genInstanceId, testcaseData, todo)
+      // const data = await generator.generate(genInstanceId, testcaseData, todo)
+      let data
+      try {
+        data = await generator.generate(genInstanceId, testcaseData, todo)
+      } catch (e) {
+        await this.logger.error({
+          message: e.message,
+          meta: todo.metaInformation,
+          stack: e.stack,
+        })
+        throw e
+      }
+
       if (data !== undefined) {
         // the instanceId to store the data is the instanceId of the TestcaseData
         // object.
@@ -329,11 +341,27 @@ export default class TestcaseProcessor extends InterfaceProcessor {
         generatorTodos[i] = undefined
 
         // erzeugt die postProcess todos
-        const postProcessTodos = await generator.createPostProcessTodos(
-          genInstanceId,
-          testcaseData,
-          todo
-        )
+        // const postProcessTodos = await generator.createPostProcessTodos(
+        //   genInstanceId,
+        //   testcaseData,
+        //   todo
+        // )
+
+        let postProcessTodos
+        try {
+          postProcessTodos = await generator.createPostProcessTodos(
+            genInstanceId,
+            testcaseData,
+            todo
+          )
+        } catch (e) {
+          await this.logger.error({
+            message: e.message,
+            meta: todo.metaInformation,
+            stack: e.stack,
+          })
+          throw e
+        }
 
         if (postProcessTodos !== undefined) {
           for (const postProcessTodo of postProcessTodos) {
@@ -406,10 +434,11 @@ export default class TestcaseProcessor extends InterfaceProcessor {
 
     // This is a root node.
     const node = new Node({
-      tableName: testcaseDefinition.table.name,
-      tableType: testcaseDefinition.table.type,
+      tableName: testcaseDefinition.tableName,
+      tableType: testcaseDefinition.tableType,
       testcaseName: testcaseDefinition.name,
       todos,
+      meta: testcaseDefinition.metaInformation,
     })
 
     const nodeList = await this._explodeNodeReferences(node)
