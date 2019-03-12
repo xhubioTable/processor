@@ -160,6 +160,9 @@ export default class TestcaseProcessor extends InterfaceProcessor {
 
     for (let i = 0; i < rootNodeList.length; i++) {
       const node = rootNodeList[i]
+
+      // Hat eine referenzierte Node ein neverExecute=true ?
+
       if (rootNodeList.length > 1) {
         // In this case we need to add a modifier to the test case name
         node.testcaseName = `${testcaseDefinition.name}-${i + 1}`
@@ -167,19 +170,46 @@ export default class TestcaseProcessor extends InterfaceProcessor {
 
       const callTree = this._buildCallTree(node)
 
-      this._recreateInstanceIds(node)
-      const tcData = new TestcaseData({
-        tableName: node.tableName,
-        name: node.testcaseName,
-        instanceId: node.instanceId,
-        callTree,
-      })
+      if (!this._isNeverExecute(callTree)) {
+        this._recreateInstanceIds(node)
+        const tcData = new TestcaseData({
+          tableName: node.tableName,
+          name: node.testcaseName,
+          instanceId: node.instanceId,
+          callTree,
+        })
 
-      await this._generateData(tcData, node)
-      tcList.push(tcData)
+        await this._generateData(tcData, node)
+        tcList.push(tcData)
+      }
     }
 
     return tcList
+  }
+
+  /**
+   * Get den call tree durch und prüft ob einer element in dem tree neverExceute=true
+   * hat.
+   * @param callTree {object} Das RootObject des callTrees
+   * @return neverExecute {boolean} true, wenn irgend ein child object neverExecute= true hat
+   */
+  _isNeverExecute(callTree) {
+    function iterate(rootObj) {
+      if (rootObj.neverExecute) {
+        return true
+      }
+
+      for (const obj of rootObj.children) {
+        if (obj.neverExecute) {
+          return true
+        }
+      }
+    }
+
+    if (iterate(callTree)) {
+      return true
+    }
+    return false
   }
 
   /**
@@ -205,6 +235,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
       instanceId: node.instanceId,
       tableName: node.tableName,
       testcaseName: node.testcaseName,
+      neverExecute: node.neverExecute,
       children,
     }
   }
@@ -558,6 +589,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
           } else {
             // this is a new Reference
             referenceSet.add(instanceIdForReference)
+
             if (node.isSelfReference(referenceCmd)) {
               reference.selfReference = true
               reference.parent = node
@@ -571,16 +603,19 @@ export default class TestcaseProcessor extends InterfaceProcessor {
               )
               targetTestcaseDefinition.logger = this.logger
 
-              const targetNodes = await this.createNodeTree(
-                targetTestcaseDefinition
-              )
+              let targetNodes = []
 
+              targetNodes = await this.createNodeTree(targetTestcaseDefinition)
               for (const targetNode of targetNodes) {
                 const newRef = reference.clone()
                 referenceMap[newRef.id] = newRef
                 newRef.target = targetNode
                 targetNode.instanceId = newRef.instanceId
                 fieldReferenceIds.push(newRef.id)
+
+                if (targetTestcaseDefinition.neverExecute) {
+                  targetNode.neverExecute = true
+                }
               }
             }
           }

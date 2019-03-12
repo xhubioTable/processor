@@ -54,14 +54,16 @@ test('createTodos', async done => {
         testcaseMeta: {
           meta: undefined,
           tableMeta: {
-            fileName:
-              path.join(FIXTURES, 'decision_table_data_for_model_decision.xls'),
+            fileName: path.join(
+              FIXTURES,
+              'decision_table_data_for_model_decision.xls'
+            ),
           },
           tableName: 'myTable',
           tableType: 'decision-table',
-          testcaseName: 1,
+          testcaseName: '1',
         },
-        testcaseName: 1,
+        testcaseName: '1',
       },
     ],
     meta: [
@@ -73,14 +75,16 @@ test('createTodos', async done => {
         testcaseMeta: {
           meta: undefined,
           tableMeta: {
-            fileName:
-              path.join(FIXTURES, 'decision_table_data_for_model_decision.xls'),
+            fileName: path.join(
+              FIXTURES,
+              'decision_table_data_for_model_decision.xls'
+            ),
           },
           tableName: 'myTable',
           tableType: 'decision-table',
-          testcaseName: 1,
+          testcaseName: '1',
         },
-        testcaseName: 1,
+        testcaseName: '1',
       },
       {
         fieldName: 'Result',
@@ -90,14 +94,16 @@ test('createTodos', async done => {
         testcaseMeta: {
           meta: undefined,
           tableMeta: {
-            fileName:
-              path.join(FIXTURES, 'decision_table_data_for_model_decision.xls'),
+            fileName: path.join(
+              FIXTURES,
+              'decision_table_data_for_model_decision.xls'
+            ),
           },
           tableName: 'myTable',
           tableType: 'decision-table',
-          testcaseName: 1,
+          testcaseName: '1',
         },
-        testcaseName: 1,
+        testcaseName: '1',
       },
     ],
     reference: [
@@ -113,14 +119,16 @@ test('createTodos', async done => {
         testcaseMeta: {
           meta: undefined,
           tableMeta: {
-            fileName:
-              path.join(FIXTURES, 'decision_table_data_for_model_decision.xls'),
+            fileName: path.join(
+              FIXTURES,
+              'decision_table_data_for_model_decision.xls'
+            ),
           },
           tableName: 'myTable',
           tableType: 'decision-table',
-          testcaseName: 1,
+          testcaseName: '1',
         },
-        testcaseName: 1,
+        testcaseName: '1',
       },
     ],
     static: [
@@ -132,14 +140,16 @@ test('createTodos', async done => {
         testcaseMeta: {
           meta: undefined,
           tableMeta: {
-            fileName:
-              path.join(FIXTURES, 'decision_table_data_for_model_decision.xls'),
+            fileName: path.join(
+              FIXTURES,
+              'decision_table_data_for_model_decision.xls'
+            ),
           },
           tableName: 'myTable',
           tableType: 'decision-table',
-          testcaseName: 1,
+          testcaseName: '1',
         },
-        testcaseName: 1,
+        testcaseName: '1',
         value: '<EMPTY>',
       },
     ],

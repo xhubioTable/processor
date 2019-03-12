@@ -9,7 +9,7 @@ import { createOpts } from './Helper'
  * @param excelTableNames {array} All the table names to be loaded from that excel file
  * @param expected {object} The expected data
  * @param expectFunction {function} A function, if given the compare will be done by this function
- * @param tableName {string} The name of the table where the testcase shiuld be executed
+ * @param tableName {string} The name of the table where the testcase should be executed
  */
 export function executeTest(testOptions) {
   const { excelFileName, excelTableNames, validator, tableName } = testOptions

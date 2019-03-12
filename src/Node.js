@@ -52,6 +52,9 @@ export default class Node {
     this.instanceIdCache = {}
 
     this.meta = opts.meta
+
+    this.neverExecute =
+      opts.neverExecute !== undefined ? opts.neverExecute : false
   }
 
   /**
@@ -209,6 +212,7 @@ export default class Node {
       tableName: this.tableName,
       tableType: this.tableType,
       testcaseName: this.testcaseName,
+      neverExecute: this.neverExecute,
       todos: clone(this.todos),
     })
 
