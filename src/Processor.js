@@ -196,20 +196,25 @@ export default class TestcaseProcessor extends InterfaceProcessor {
   _isNeverExecute(callTree) {
     function iterate(rootObj) {
       if (rootObj.neverExecute) {
-        return true
+        return true;
       }
 
       for (const obj of rootObj.children) {
         if (obj.neverExecute) {
+          return true;
+        }
+        if( iterate(obj)){
           return true
         }
       }
+      return false
     }
 
     if (iterate(callTree)) {
-      return true
+      return true;
     }
-    return false
+
+    return false;
   }
 
   /**
