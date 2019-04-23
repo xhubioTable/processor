@@ -14,7 +14,7 @@ import GeneratorMyPerson from './generator/GeneratorMyPerson'
 import GeneratorNoData from './generator/GeneratorNoData'
 import GeneratorArgs from './generator/GeneratorArgs'
 
-import { Processor } from '../lib/index'
+import { Processor } from '../lib'
 
 const LOGGER = getLoggerMemory()
 

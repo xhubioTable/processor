@@ -14,6 +14,38 @@ export default class TestcaseProcessor extends InterfaceProcessor {
 
     this.writeMetaData = opts.writeMetaData || writeMetaData
     this.writeStaticData = opts.writeStaticData || writeStaticData
+
+    // Stores all the filter processors by there name
+    this.filterProcessor = new Map()
+  }
+
+  /**
+   * Adds a new filterProcessor to the processor
+   * @param filterProcessor {object} A filterProcessor object
+   */
+  addFilterProcessor(filterProcessor) {
+    const name = filterProcessor.name
+    if (this.filterProcessor.has(name)) {
+      this.logger.error(
+        `There is already a filterProcessor registered with the name '${name}'`
+      )
+    }
+    this.filterProcessor.set(name, filterProcessor)
+  }
+
+  /**
+   * Returns a filterProcessor with the given name
+   * @param name {string} The name of this filterProcessor
+   * @return filterProcessor {object} The filterProcessor with the given name
+   */
+  getFilterProcessor(name) {
+    if (!this.filterProcessor.has(name)) {
+      this.logger.error(
+        `A filterProcessor with the name '${name}' does not exists. Filter is ignored`
+      )
+    }
+
+    return this.filterProcessor.get(name)
   }
 
   /**
@@ -41,6 +73,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
         await this.logger.info(`Work on table '${tableName}'`)
         const table = this.tables[tableName]
         table.logger = this.logger
+
         await this.processTable(table)
       }
       // TODO Für alle generatoren die die Daten speichern
@@ -170,7 +203,10 @@ export default class TestcaseProcessor extends InterfaceProcessor {
 
       const callTree = this._buildCallTree(node)
 
-      if (!this._isNeverExecute(callTree)) {
+      if (
+        !this._isNeverExecute(callTree) &&
+        this._isFilterOk({ testcaseDefinition, callTree })
+      ) {
         this._recreateInstanceIds(node)
         const tcData = new TestcaseData({
           tableName: node.tableName,
@@ -188,22 +224,54 @@ export default class TestcaseProcessor extends InterfaceProcessor {
   }
 
   /**
-   * Get den call tree durch und prüft ob einer element in dem tree neverExceute=true
-   * hat.
-   * @param callTree {object} Das RootObject des callTrees
-   * @return neverExecute {boolean} true, wenn irgend ein child object neverExecute= true hat
+   * Returns false if this test case has a filter and the test case does not
+   * match the filter criteria
+   * @param testcaseDefinition {object} The Testcase definition to be executed
+   * @param callTree {object} The RootObject of the callTree
+   * @return testcaseDataList {array} An array TestcaseData Objects
+   */
+  _isFilterOk({ callTree, testcaseDefinition }) {
+    const allTags = this._getTags(callTree)
+    const allFilter = testcaseDefinition.createFilter()
+
+    let isFilterOk = true
+
+    // No Filter, no problems
+    if (allFilter.length > 0 && allTags.length > 0) {
+      // If more then one filter is defined, the filter are AND connected
+      for (const filterDef of allFilter) {
+        const filterProcessorName = filterDef.filterProcessorName
+        const expression = filterDef.expression
+
+        const filterProcessor = this.getFilterProcessor(filterProcessorName)
+        if (filterProcessor !== undefined) {
+          if (!filterProcessor.filter(allTags, expression)) {
+            isFilterOk = false
+            break
+          }
+        }
+      }
+    }
+
+    return isFilterOk
+  }
+
+  /**
+   * Iterates through the call tree and checks if there is an element with neverExceute=true
+   * @param callTree {object} The RootObject of the callTree
+   * @return neverExecute {boolean} true, if one child object has neverExecute=true
    */
   _isNeverExecute(callTree) {
     function iterate(rootObj) {
       if (rootObj.neverExecute) {
-        return true;
+        return true
       }
 
       for (const obj of rootObj.children) {
         if (obj.neverExecute) {
-          return true;
+          return true
         }
-        if( iterate(obj)){
+        if (iterate(obj)) {
           return true
         }
       }
@@ -211,10 +279,31 @@ export default class TestcaseProcessor extends InterfaceProcessor {
     }
 
     if (iterate(callTree)) {
-      return true;
+      return true
     }
 
-    return false;
+    return false
+  }
+
+  /**
+   * Get all the tags of all the nodes in one array back.
+   * @param callTree {object} Das RootObject des callTrees
+   * @return tags {array} an array with all the tags
+   */
+  _getTags(callTree) {
+    const tags = []
+    function iterate(rootObj) {
+      rootObj.tags.forEach(tag => {
+        tags.push(tag)
+      })
+
+      for (const obj of rootObj.children) {
+        iterate(obj)
+      }
+    }
+
+    iterate(callTree)
+    return tags
   }
 
   /**
@@ -241,6 +330,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
       tableName: node.tableName,
       testcaseName: node.testcaseName,
       neverExecute: node.neverExecute,
+      tags: node.tags,
       children,
     }
   }
@@ -468,6 +558,8 @@ export default class TestcaseProcessor extends InterfaceProcessor {
   async createNodeTree(testcaseDefinition) {
     const todos = testcaseDefinition.createTodos()
 
+    const tags = testcaseDefinition.createTags()
+
     // This is a root node.
     const node = new Node({
       tableName: testcaseDefinition.tableName,
@@ -475,6 +567,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
       testcaseName: testcaseDefinition.name,
       todos,
       meta: testcaseDefinition.metaInformation,
+      tags,
     })
 
     const nodeList = await this._explodeNodeReferences(node)

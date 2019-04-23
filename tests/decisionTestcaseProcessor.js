@@ -2,6 +2,9 @@ import path from 'path'
 
 import { getLoggerMemory } from '@xhubiotable/logger'
 import { createOpts } from './Helper'
+import { SimpleArrayFilterProcessor } from '../lib'
+
+const filterProcessor = new SimpleArrayFilterProcessor()
 
 /**
  * Executes the test for the testcase processor of decision tables
@@ -30,6 +33,7 @@ export function executeTest(testOptions) {
     // Create the testcase processor with all the data needed
     const opts = await createOpts(excelTableNames, [dataFileName])
     const processor = opts.processor
+    processor.addFilterProcessor(filterProcessor)
 
     const result = {}
 

@@ -1,5 +1,5 @@
 /**
- * Creates defaults for fileProcessor, writer and generator regoistry.
+ * Creates defaults for fileProcessor, writer and generator registry.
  * These defaults are not usefull for production, but for starting and testing.
  */
 

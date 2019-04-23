@@ -55,6 +55,9 @@ export default class Node {
 
     this.neverExecute =
       opts.neverExecute !== undefined ? opts.neverExecute : false
+
+    // saves all the active tags. These Tags are used for filtering
+    this.tags = opts.tags || []
   }
 
   /**
@@ -213,6 +216,7 @@ export default class Node {
       tableType: this.tableType,
       testcaseName: this.testcaseName,
       neverExecute: this.neverExecute,
+      tags: this.tags,
       todos: clone(this.todos),
     })
 
