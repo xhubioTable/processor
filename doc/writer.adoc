@@ -1,10 +1,10 @@
+== Writer Interface
+
 The writer is responsible to export the generated data in the format needed.
 Best practice is to create one writer for each format or kind of data.
 
 
-=== Writer Interface
-
-==== Constructor
+=== Constructor
 
 .constructor of a writer
 [source, js]
@@ -21,7 +21,7 @@ The constructor will get the logger. So to write any logs you could use:
 this.logger.info('My important info')
 ----
 
-==== before
+=== before
 This method is called when the processor start working on the test cases.
 This is meant for set up the writer.
 
@@ -32,7 +32,7 @@ async before() {
 }
 ----
 
-==== after
+=== after
 This method is called when the processor has finished all the test cases.
 This is meant for tear down the writer.
 
@@ -43,7 +43,7 @@ async after() {
 }
 ----
 
-==== write
+=== write
 This is the method doing the work. It will be called for each test case.
 It will get the test case data object which contains all then generated
 data for one test case.
