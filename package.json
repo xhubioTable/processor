@@ -6,7 +6,7 @@
   },
   "description": "",
   "keywords": [
-    "decision-table"
+    "decision-table", "equivalence-class-table", "data generator", "test data", "test"
   ],
   "main": "lib/index.js",
   "repository": {
@@ -24,6 +24,9 @@
     "test_only": "jest",
     "test": "npm run build && jest -c jest.config.json",
     "debug": "npm run build && node --inspect-brk ./node_modules/.bin/jest -i --config=./jest.config.json",
+    "doc_html": "npx jsdoc -r -c jsdoc.config.json src",
+    "doc_md": "npx jsdoc2md -c jsdoc.config.json src/*.js > doc/api.md ",
+    "doc": "npm run doc_html && npm run doc_md",
     "prepare": "npm run build"
   },
   "contributors": [
@@ -52,6 +55,9 @@
     "jest": "24.7.1",
     "jest-cli": "24.7.1",
     "jest-environment-node-debug": "2.0.0",
+    "jsdoc": "3.5.5",
+    "jsdoc-export-default-interop": "0.3.1",
+    "jsdoc-to-markdown": "4.0.1",
     "prettier": "1.17.0",
     "regenerator-runtime": "0.13.2",
     "semantic-release": "15.13.3"
