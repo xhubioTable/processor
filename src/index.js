@@ -3,6 +3,7 @@ import InterfaceWriter from './InterfaceWriter'
 import InterfaceProcessor from './InterfaceProcessor'
 import FilterProcessorInterface from './filter/FilterProcessorInterface'
 import SimpleArrayFilterProcessor from './filter/SimpleArrayFilterProcessor'
+import SimpleArrayIgnoreFilterProcessor from './filter/SimpleArrayIgnoreFilterProcessor'
 
 import {
   createDefaultGeneratorRegistry,
@@ -19,4 +20,5 @@ export {
   createDefaultFileProcessor,
   FilterProcessorInterface,
   SimpleArrayFilterProcessor,
+  SimpleArrayIgnoreFilterProcessor,
 }
