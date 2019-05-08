@@ -191,6 +191,9 @@ export default class TestcaseProcessor extends InterfaceProcessor {
     const rootNodeList = await this.createNodeTree(testcaseDefinition)
     const tcList = []
 
+    // A list of generator names to be skipped for this test case
+    const generatorSwitches = testcaseDefinition.createGeneratorSwitches()
+
     for (let i = 0; i < rootNodeList.length; i++) {
       const node = rootNodeList[i]
 
@@ -215,7 +218,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
           callTree,
         })
 
-        await this._generateData(tcData, node)
+        await this._generateData(tcData, node, generatorSwitches)
         tcList.push(tcData)
       }
     }
@@ -342,8 +345,9 @@ export default class TestcaseProcessor extends InterfaceProcessor {
    * object.
    * @param testcaseData {object} The testcase data object for storing the data
    * @param node {object} The node to create the data for
+   * @param generatorSwitches {array} A list of generator names to be skipped
    */
-  async _generateData(testcaseData, node) {
+  async _generateData(testcaseData, node, generatorSwitches) {
     /**
      * Deletes all the entries of the array which are undefined
      * @param data {array} The array to be cleaned
@@ -361,8 +365,12 @@ export default class TestcaseProcessor extends InterfaceProcessor {
 
     const todosStatic = node.todosStatic
     const todosMeta = node.todosMeta
-    let todosGenerator = node.todosGenerator
     let todosReference = node.todosReference
+
+    // filter for generators which are switched off
+    let todosGenerator = node.todosGenerator.filter(
+      genTodo => !generatorSwitches.includes(genTodo.generatorName)
+    )
 
     this.writeStaticData(testcaseData, todosStatic)
     this.writeMetaData(testcaseData, todosMeta)
@@ -370,7 +378,6 @@ export default class TestcaseProcessor extends InterfaceProcessor {
     let changeCount = 0
     do {
       changeCount = 0
-
       changeCount += await this._executeGeneratorTodos(
         testcaseData,
         todosGenerator
@@ -539,6 +546,14 @@ export default class TestcaseProcessor extends InterfaceProcessor {
 
           const data =
             testcaseData.data[targetTableName][refInstanceId][targetFieldName]
+
+          if (testcaseData.data[parentTableName] === undefined) {
+            testcaseData.data[parentTableName] = {}
+          }
+          if (testcaseData.data[parentTableName][instanceId] === undefined) {
+            testcaseData.data[parentTableName][instanceId] = {}
+          }
+
           testcaseData.data[parentTableName][instanceId][parentFieldName] = data
 
           changeCount++

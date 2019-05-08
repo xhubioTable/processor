@@ -78,12 +78,16 @@ export function createGeneratorRegistry() {
   const genMyPerson = new GeneratorMyPerson()
   const genEmpty = new GeneratorNoData()
   const genArgs = new GeneratorArgs()
+  const genArgs1 = new GeneratorArgs()
+  const genArgs2 = new GeneratorArgs()
   const genPostProcess = new GeneratorPostProcess()
 
   serviceRegistry.registerGenerator('faker', genFaker)
   serviceRegistry.registerGenerator('myPerson', genMyPerson)
   serviceRegistry.registerGenerator('empty', genEmpty)
   serviceRegistry.registerGenerator('args', genArgs)
+  serviceRegistry.registerGenerator('gumbo', genArgs1)
+  serviceRegistry.registerGenerator('bazong', genArgs2)
   serviceRegistry.registerGenerator('postProcess', genPostProcess)
 
   return serviceRegistry
