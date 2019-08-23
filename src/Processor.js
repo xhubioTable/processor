@@ -396,16 +396,12 @@ export default class TestcaseProcessor extends InterfaceProcessor {
       const data = []
       for (const todo of todosGenerator) {
         data.push(
-          `Generator: ${todo.tableName} -> ${todo.testcaseName} -> ${
-            todo.fieldName
-          } -> ${todo.generatorName}`
+          `Generator: ${todo.tableName} -> ${todo.testcaseName} -> ${todo.fieldName} -> ${todo.generatorName}`
         )
       }
       for (const todo of todosReference) {
         data.push(
-          `Reference: ${todo.tableName} -> ${todo.testcaseName} -> ${
-            todo.fieldName
-          }`
+          `Reference: ${todo.tableName} -> ${todo.testcaseName} -> ${todo.fieldName}`
         )
       }
 

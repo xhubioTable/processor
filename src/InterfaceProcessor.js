@@ -27,9 +27,7 @@ export default class InterfaceProcessor {
         if (this._tables[table.name] !== undefined) {
           this.logger.error({
             function: 'set tables',
-            message: `The table name '${
-              table.name
-            }' is double. The last table overwrites the previous one`,
+            message: `The table name '${table.name}' is double. The last table overwrites the previous one`,
           })
         }
         this._tables[table.name] = table

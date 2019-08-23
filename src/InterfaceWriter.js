@@ -21,9 +21,7 @@ export default class InterfaceWriter {
   async write(testcaseData) {
     // eslint-disable-next-line no-console
     console.log(
-      `Write testcase '${testcaseData.name}' for table '${
-        testcaseData.tableName
-      }'`
+      `Write testcase '${testcaseData.name}' for table '${testcaseData.tableName}'`
     )
   }
 
