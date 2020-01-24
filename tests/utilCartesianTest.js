@@ -3,7 +3,10 @@ import { cartesianProduct } from '../lib/utilCartesian'
 const TEST_DATA = [
   [[[1, 2, 3]], [1, 2, 3], 'single array'],
   [
-    [[1, 2, 3], ['a', 'b', 'c']],
+    [
+      [1, 2, 3],
+      ['a', 'b', 'c'],
+    ],
     [
       [1, 'a'],
       [1, 'b'],
@@ -18,7 +21,11 @@ const TEST_DATA = [
     'two arrays',
   ],
   [
-    [[1, 2, 3], ['a', 'b', 'c'], ['x', 'y']],
+    [
+      [1, 2, 3],
+      ['a', 'b', 'c'],
+      ['x', 'y'],
+    ],
     [
       [1, 'a', 'x'],
       [1, 'a', 'y'],
