@@ -1,4 +1,5 @@
-const helper = (a, b) => [].concat(...a.map(d => b.map(e => [].concat(d, e))))
+const helper = (a, b) =>
+  [].concat(...a.map((d) => b.map((e) => [].concat(d, e))))
 
 /**
  * This function builds a cartesian product out of the given arrays

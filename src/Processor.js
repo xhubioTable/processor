@@ -1,4 +1,4 @@
-import uuidv4 from 'uuid/v4'
+import { v4 as uuidv4 } from 'uuid'
 
 import Node from './Node'
 import TestcaseData from './TestcaseData'
@@ -296,7 +296,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
   _getTags(callTree) {
     const tags = []
     function iterate(rootObj) {
-      rootObj.tags.forEach(tag => {
+      rootObj.tags.forEach((tag) => {
         tags.push(tag)
       })
 
@@ -369,7 +369,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
 
     // filter for generators which are switched off
     let todosGenerator = node.todosGenerator.filter(
-      genTodo => !generatorSwitches.includes(genTodo.generatorName)
+      (genTodo) => !generatorSwitches.includes(genTodo.generatorName)
     )
 
     this.writeStaticData(testcaseData, todosStatic)

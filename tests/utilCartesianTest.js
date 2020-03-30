@@ -1,4 +1,4 @@
-import { cartesianProduct } from '../lib/utilCartesian'
+import { cartesianProduct } from '../src/utilCartesian'
 
 const TEST_DATA = [
   [[[1, 2, 3]], [1, 2, 3], 'single array'],

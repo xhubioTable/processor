@@ -2,7 +2,7 @@ import path from 'path'
 
 import { getLoggerMemory } from '@xhubiotable/logger'
 import { createOpts } from './Helper'
-import { SimpleArrayFilterProcessor } from '../lib'
+import { SimpleArrayFilterProcessor } from '../src'
 
 const filterProcessor = new SimpleArrayFilterProcessor()
 
@@ -41,7 +41,7 @@ export function executeTest(testOptions) {
       before: async () => {
         return Promise.resolve()
       },
-      write: async testcaseData => {
+      write: async (testcaseData) => {
         if (result[testcaseData.tableName] === undefined) {
           result[testcaseData.tableName] = {}
         }
@@ -64,7 +64,7 @@ export function executeTest(testOptions) {
     await processor.processTable(table)
 
     // log all the errors
-    logger.entries.error.forEach(error => {
+    logger.entries.error.forEach((error) => {
       // eslint-disable-next-line no-console
       console.log(JSON.stringify(error, null, 2))
     })

@@ -4,7 +4,7 @@ import {
   createDefaultGeneratorRegistry,
   createDefaultWriter,
   createDefaultFileProcessor,
-} from '../lib/index'
+} from '../src/index'
 
 const logger = getLoggerMemory()
 

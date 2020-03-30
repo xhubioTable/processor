@@ -6,7 +6,6 @@
 import util from 'util'
 import fs from 'fs'
 import path from 'path'
-import mkdirp from 'mkdirp'
 
 import { TDGServiceRegistry } from '@xhubiotable/data-generator'
 import InterfaceWriter from './InterfaceWriter'
@@ -19,7 +18,6 @@ import {
 
 import { ImporterXlsx } from '@xhubiotable/importer-xlsx'
 
-const md = util.promisify(mkdirp)
 const writeFile = util.promisify(fs.writeFile)
 
 export function createDefaultGeneratorRegistry() {
@@ -68,8 +66,6 @@ class DefaultWriter extends InterfaceWriter {
   async createFileName(testcaseData) {
     const tcName = testcaseData.name
     const targetDir = path.join('tdg', tcName)
-    await md(targetDir)
-
     return path.join(targetDir, 'testcaseData.json')
   }
 }

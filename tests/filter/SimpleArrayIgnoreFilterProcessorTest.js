@@ -1,4 +1,4 @@
-import { SimpleArrayIgnoreFilterProcessor } from '../../lib'
+import { SimpleArrayIgnoreFilterProcessor } from '../../src'
 
 test('SimpleArrayIgnoreFilterProcessor default values', async () => {
   const filterProcessor = new SimpleArrayIgnoreFilterProcessor()

@@ -1,4 +1,4 @@
-import { SimpleArrayFilterProcessor } from '../../lib'
+import { SimpleArrayFilterProcessor } from '../../src'
 
 test('SimpleArrayFilterProcessor default values', async () => {
   const filterProcessor = new SimpleArrayFilterProcessor()
