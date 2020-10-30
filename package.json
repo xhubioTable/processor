@@ -70,7 +70,7 @@
     "@babel/runtime": "7.9.2",
     "@xhubiotable/data-generator": "2.2.3",
     "@xhubiotable/file-processor": "2.4.3",
-    "@xhubiotable/importer-xlsx": "2.0.8",
+    "@xhubiotable/importer-xlsx": "2.0.9",
     "@xhubiotable/logger": "2.0.10",
     "@xhubiotable/model-decision": "2.4.3",
     "@xhubiotable/model-matrix": "2.3.2",
