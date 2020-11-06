@@ -78,5 +78,10 @@
     "clone": "2.1.2",
     "mkdirp": "1.0.3",
     "uuid": "7.0.2"
+  },
+  "template": {
+    "usedBy": [
+      "xhubioTable/logger"
+    ]
   }
 }
