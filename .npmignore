@@ -4,11 +4,10 @@ build
 src
 *.log
 *.tmp
-.DS_Store
 .test
 .tmp
 .gitignore
-.npmrc
 .travis.yml
 .npmignore
 tests
+.github
