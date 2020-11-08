@@ -67,7 +67,7 @@
     "semantic-release": "17.0.4"
   },
   "dependencies": {
-    "@babel/runtime": "7.9.6",
+    "@babel/runtime": "7.12.1",
     "@xhubiotable/data-generator": "2.2.3",
     "@xhubiotable/file-processor": "2.4.3",
     "@xhubiotable/importer-xlsx": "2.0.8",
