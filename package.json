@@ -70,7 +70,7 @@
     "@xhubiotable/importer-xlsx": "2.0.11",
     "@xhubiotable/logger": "2.0.12",
     "@xhubiotable/model-decision": "2.4.6",
-    "@xhubiotable/model-matrix": "2.3.4",
+    "@xhubiotable/model-matrix": "2.3.5",
     "chalk": "4.1.0",
     "clone": "2.1.2",
     "mkdirp": "1.0.4",
