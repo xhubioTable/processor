@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid'
+import clone from 'clone'
 
 import Node from './Node'
 import TestcaseData from './TestcaseData'
@@ -123,7 +124,7 @@ export default class TestcaseProcessor extends InterfaceProcessor {
               delete tcData.postProcessTodos
 
               for (const writer of this.writer) {
-                await writer.write(tcData)
+                await writer.write(clone(tcData))
               }
             }
           } catch (err) {
@@ -685,9 +686,8 @@ export default class TestcaseProcessor extends InterfaceProcessor {
           }
 
           // creates the instanceId for this reference
-          const instanceIdForReference = node.createReferenceInstanceId(
-            referenceCmd
-          )
+          const instanceIdForReference =
+            node.createReferenceInstanceId(referenceCmd)
           reference.instanceId = instanceIdForReference
 
           if (referenceSet.has(instanceIdForReference)) {
@@ -707,9 +707,8 @@ export default class TestcaseProcessor extends InterfaceProcessor {
               referenceMap[reference.id] = reference
             } else {
               // process the reference target and get the target nodes
-              const targetTestcaseDefinition = targetTable.getTestcaseForName(
-                tcName
-              )
+              const targetTestcaseDefinition =
+                targetTable.getTestcaseForName(tcName)
               targetTestcaseDefinition.logger = this.logger
 
               let targetNodes = []
