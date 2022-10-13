@@ -71,7 +71,7 @@
     "@xhubiotable/logger": "2.0.14",
     "@xhubiotable/model-decision": "2.4.8",
     "@xhubiotable/model-matrix": "2.3.6",
-    "chalk": "4.1.1",
+    "chalk": "5.1.2",
     "clone": "^2.1.2",
     "mkdirp": "1.0.4",
     "uuid": "8.3.2"
