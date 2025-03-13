@@ -1,0 +1,17 @@
+ignores: [
+  "@eslint/eslintrc",
+  "@eslint/js",
+  "@semantic-release/*",
+  "@tlink/build-base",
+  "@types/jest",
+  "@types/node",
+  "@typescript-eslint/eslint-plugin",
+  "@typescript-eslint/parser",
+  "eslint-config-prettier",
+  "eslint-plugin-*",
+  "globals",
+  "semantic-release",
+  "ts-jest",
+  "typedoc",
+  "typedoc-plugin-markdown"
+]

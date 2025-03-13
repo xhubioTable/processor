@@ -1,55 +1,61 @@
 == Overview
-The following image shows the interaction of the processor with the outside world.
+
+The following diagram shows the interaction between the processor and external components.  
+It illustrates the order in which the processor executes its tasks, along with the flow of data between the processor, generators, and writers.
 
 image::images/processor/processorOverview.svg[]
 
-Understanding the picture::
-  The order of the arrows is the order in which the processor executes. The rectangles on
-	the left side shows the program flow in the processor. The arrows are interactions with
-	the generators and writers provided.
+Understanding the Picture:
+* The order of the arrows indicates the sequence in which the processor executes its operations.
+* The rectangles on the left represent the internal program flow within the processor.
+* The arrows depict interactions with the external generators and writers.
 
 === Init
-The init phase
-is where the custom code sets up the processor.
-You provide a generator registry with all the needed generators registered. Then you
-provide an array with all the needed writer.
 
-After loading all the spreadsheets you provide the table models as an array to the processor.
-Now the processor is prepared to work.
-
+In the initialization phase, custom code sets up the processor. This involves:
+* Providing a generator registry with all required generators registered.
+* Supplying an array of writer objects that will be used to output the test case data.
+* Loading all spreadsheets and converting them into table models.
+  
+After these steps, the processor is ready to begin processing.
 
 === Process
-When the process function is called. The first thing is the setup of the generators and writers.
+
+When the `process()` function is invoked, the processor goes through several steps:
 
 ==== loadStore()
-Loop over all the generators and call the 'loadStore()' function. This gives the generator the possibility
-to setup the generator as needed. The load store function of the generator is only executed if the property
-'useStore' is set to a true value.
+
+* The processor iterates over all registered generators and calls their `loadStore()` method.
+* This allows each generator to initialize or load stored data if its `useStore` property is true.
 
 ==== writer.before()
-Loop over all the writers and call the 'before()' function. So the writer could do some setup stuff.
-Maybe some writers will write to a database and needs to setup the connection.
 
-==== loop tables
-After setup of the generators and writers the processor loops over all the tables. Each table can provide
-a list of test cases to be executed.
+* The processor loops over all writer objects and calls their `before()` method.
+* This step allows writers to perform any necessary setup (e.g., establishing database connections).
 
-==== loop test cases
-Loop over all the test cases a table provides. Each test case is processed independently from each other.
-The first thing is to generate the data. For this it is calling the 'generate' function of all the generators
-defined in the test case. (Also it will solve all the references. But as this is no external interaction it
-is not shown in this picture.)
+==== Loop Tables
 
-Then it calls the 'createPostProcessTodo' function of all the generators defined in the test case. After that the
-'PostProcessTodos' are executed. Now all the data for the test case should be created.
+* The processor iterates over all provided table models.
+* Each table supplies a list of test cases that are to be executed.
 
-Next step is calling the the 'write()' function of all the provided writer.
+==== Loop Test Cases
+
+* For each test case provided by a table, the processor processes it independently.
+* The processing of a test case involves:
+  - Calling the `generate()` method of all generators defined in the test case to produce data.
+  - Resolving all references (internally) within the test case.
+  - Calling `createPostProcessTodos()` on each generator to prepare additional processing tasks.
+  - Executing all gathered postprocessing todos to finalize the data for the test case.
+  - Finally, calling the `write()` method on all writer objects to export the generated data.
 
 ==== saveStore()
-Now all the data is generated and all the writers have exported the data in any format needed.
 
-Loop over all the generators and call the 'saveStore()' function. This gives the generator the possibility
-to store the already generated data for the next run.
+* Once all test case data has been generated and written, the processor iterates over all generators again and calls their `saveStore()` method.
+* This allows generators to store or cache the generated data for future runs.
 
 ==== writer.after()
-Here the writer could tear down if needed.
+
+* In the final step, the processor calls the `after()` method on all writer objects.
+* This step allows writers to perform any necessary teardown or cleanup operations.
+
+This comprehensive flow ensures that the processor sets up its components, generates and processes test case data, and finally exports the data in the required format.

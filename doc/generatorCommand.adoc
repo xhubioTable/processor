@@ -1,40 +1,37 @@
 == Generator Command
-In the generator section the user defines how to generate the data for a field.
 
-.example from a decision table
+The generator command in a decision table specifies how to generate data for a field. It allows users to instruct a data generator to produce a set of data that can be reused across multiple fields if needed. This mechanism is especially useful when a generator must provide consistent data (e.g., a person's name, email, etc.) for different columns or rows within the same test case.
+
+.example from a decision table:
 image::images/processor/generator.png[]
 
+=== Generator Command Format
 
-=== Generator command
-The generator is used to generate new data.
+The generator command follows the format:
 
 ----
-gen:<instanceId>:<generatorName>:<any Parameter>
+gen:<instanceId>:<generatorName>:<parameter>
 ----
 
-instanceId::
-	The instance id is an internal id for creating a an instance of a given test case. If no Id is given
-	a uuid will be taken by the generator. The instance id allows the user to get the same data set from
-	a generator on different fields. +
-  For Example there is a generator which creates personal data.
-	It will generate a 'firstName', 'lastName' and a email. But the data is needed in three different fields of the table.
-	Each time the generator is called it normally creates a new set of data. But this is not what is needed in this case.
-  +
-  Assume the data generator is named ''AdressDataGenerator'' and it has a parameter to tell which data to be returned.
+* **instanceId**  
+  An internal identifier for the generated data instance. If no instanceId is provided, the generator will automatically generate a UUID. By specifying an instanceId, the same data set can be retrieved across different fields, ensuring consistency.
+
+* **generatorName**  
+  The name of the data generator to invoke. This name must match a registered generator in the system.
+
+* **parameter**  
+  Additional parameters that dictate which piece of data to return from the generator. This allows the same generator to produce multiple related values (e.g., firstName, lastName, email).
+
+For example, consider a generator called "AdressDataGenerator" that creates personal data. Instead of generating new data for every field, you can reuse the same data set by providing the same instanceId:
 
 ----
 gen:1:AdressDataGenerator:firstName  <1>
-
 gen:1:AdressDataGenerator:lastName   <2>
-
 gen:1:AdressDataGenerator:email      <3>
 ----
-<1> The first call of the generator. It will create a new set of data. The data
-will be stores under the instanceId ''1'' And the data for the field ''firstName'' is
-returned.
-<2> The second call of the generator. The generator find data for the instance id ''1''
-and will not generator new data. Then it will return the data for ''lastName''
-<3> The same as for 2.
 
-The instanceId allows the user to call the same generator many times but got access to
-the same data if needed.
+<1> The first call (with instanceId "1") creates a new data set and returns the value for "firstName".  
+<2> The second call (using the same instanceId "1") retrieves the existing data set and returns "lastName".  
+<3> Similarly, the third call retrieves the "email" value from the same data set.
+
+The use of the instanceId parameter is crucial; it ensures that multiple calls to the same generator yield consistent results when required.

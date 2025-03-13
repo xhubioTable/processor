@@ -1,62 +1,55 @@
 == Writer Interface
 
-The writer is responsible to export the generated data in the format needed.
-Best practice is to create one writer for each format or kind of data.
-
+The Writer is responsible for exporting the generated test case data in the required format. It is best practice to implement one writer per target format or data type.
 
 === Constructor
 
-.constructor of a writer
+The constructor initializes the writer and sets up the logger. The logger is used for writing logs throughout the writer's lifecycle.
+
 [source, js]
 ----
 constructor(opts = {}) {
-	this.logger = opts.logger || getLoggerMemory()
+  this.logger = opts.logger || getLoggerMemory()
 }
 ----
-
-The constructor will get the logger. So to write any logs you could use:
-
+*Example:*  
+You can log information within the writer using:
 [source, js]
 ----
 this.logger.info('My important info')
 ----
 
 === before
-This method is called when the processor start working on the test cases.
-This is meant for set up the writer.
+
+The `before()` method is called once when the processor starts processing test cases. It is intended for any necessary setup or initialization (e.g., opening a file, establishing a connection, etc.).
 
 [source, js]
 ----
 async before() {
-	console.log(`Start a new processing`)
+  console.log(`Start a new processing`)
 }
 ----
 
 === after
-This method is called when the processor has finished all the test cases.
-This is meant for tear down the writer.
+
+The `after()` method is invoked after all test cases have been processed. It is meant for any necessary teardown or cleanup tasks (e.g., closing connections, writing final summary, etc.).
 
 [source, js]
 ----
 async after() {
-	console.log(`End processing`)
+  console.log(`End processing`)
 }
 ----
 
 === write
-This is the method doing the work. It will be called for each test case.
-It will get the test case data object which contains all then generated
-data for one test case.
 
-It is up to the writer to extract the needed.
+The `write()` method is the core of the Writer interface. It is called once for each test case and receives a test case data object containing all generated data for that test case. It is the writer's responsibility to extract and export the data in the desired format.
 
 [source, js]
 ----
 async write(testcaseData) {
-	console.log(
-		`Write testcase '${testcaseData.name}' for table '${
-			testcaseData.tableName
-		}'`
-	)
+  console.log(
+    `Write testcase '${testcaseData.name}' for table '${testcaseData.tableName}'`
+  )
 }
 ----
