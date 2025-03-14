@@ -4,7 +4,7 @@ import {
   TestcaseTodosInterface,
   TodoReference,
   TodoReferenceInterface
-} from '@tlink/model'
+} from '@xhubiotable/model'
 import { NodeInterface, NodeTodosType } from './NodeInterface'
 import { Reference } from './Reference'
 import { NodeTodoGeneratorInterface } from './NodeTodoGeneratorInterface'

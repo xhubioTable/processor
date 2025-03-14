@@ -1,6 +1,6 @@
 import path from 'node:path'
 
-import { getLoggerMemory } from '@tlink/logger'
+import { getLoggerMemory } from '@xhubiotable/logger'
 import { createOpts } from './Helper'
 import { TestcaseDataInterface } from '../src/TestcaseDataInterface'
 

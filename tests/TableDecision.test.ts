@@ -6,10 +6,10 @@
 
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { ImporterXlsx } from '@tlink/importer-xlsx'
-import { ParserDecision, FileProcessor } from '@tlink/file-processor'
-import { getLoggerMemory } from '@tlink/logger'
-import { TableDecision } from '@tlink/model-decision'
+import { ImporterXlsx } from '@xhubiotable/importer-xlsx'
+import { ParserDecision, FileProcessor } from '@xhubiotable/file-processor'
+import { getLoggerMemory } from '@xhubiotable/logger'
+import { TableDecision } from '@xhubiotable/model-decision'
 
 const FIXTURES = path.join(__dirname, 'fixtures')
 const VOLATILE = path.join(__dirname, 'volatile', 'TableDecision')

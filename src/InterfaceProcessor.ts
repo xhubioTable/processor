@@ -1,4 +1,4 @@
-import { TableInterface } from '@tlink/model'
+import { TableInterface } from '@xhubiotable/model'
 
 /**
  * Defines the public API for an InterfaceProcessor.

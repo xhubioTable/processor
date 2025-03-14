@@ -1,4 +1,4 @@
-import { TodoFieldInterface } from '@tlink/model'
+import { TodoFieldInterface } from '@xhubiotable/model'
 import { NodeInterface } from './NodeInterface'
 
 /** Defines the common data for all the todos. */

@@ -1,21 +1,24 @@
-import { LoggerMemory } from '@tlink/logger'
+import { LoggerMemory } from '@xhubiotable/logger'
 
-import { ImporterXlsx } from '@tlink/importer-xlsx'
+import { ImporterXlsx } from '@xhubiotable/importer-xlsx'
 import {
   FileProcessor,
   ParserMatrix,
   ParserDecision,
   ParserSpecification
-} from '@tlink/file-processor'
+} from '@xhubiotable/file-processor'
 
-import { DataGeneratorRegistry, GeneratorFaker } from '@tlink/data-generator'
+import {
+  DataGeneratorRegistry,
+  GeneratorFaker
+} from '@xhubiotable/data-generator'
 import { GeneratorPostProcess } from './generator/GeneratorPostProcess'
 import { GeneratorMyPerson } from './generator/GeneratorMyPerson'
 import { GeneratorNoData } from './generator/GeneratorNoData'
 import { GeneratorArgs } from './generator/GeneratorArgs'
 
 import { InterfaceWriter, TestcaseProcessor } from '../src/index'
-import { TableInterface } from '@tlink/model'
+import { TableInterface } from '@xhubiotable/model'
 
 const LOGGER = new LoggerMemory()
 

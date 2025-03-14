@@ -1,12 +1,12 @@
-[**@tlink/processor**](../README.md)
+[**@xhubiotable/processor**](../README.md)
 
 ***
 
-[@tlink/processor](../globals.md) / TestcaseProcessorOptions
+[@xhubiotable/processor](../globals.md) / TestcaseProcessorOptions
 
 # Interface: TestcaseProcessorOptions
 
-Defined in: TestcaseProcessor.ts:33
+Defined in: [TestcaseProcessor.ts:33](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L33)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: TestcaseProcessor.ts:33
 
 > **generatorRegistry**: `DataGeneratorRegistry`
 
-Defined in: TestcaseProcessor.ts:38
+Defined in: [TestcaseProcessor.ts:38](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L38)
 
 The registry containing all the data generators
 
@@ -24,7 +24,7 @@ The registry containing all the data generators
 
 > `optional` **logger**: `LoggerInterface`
 
-Defined in: TestcaseProcessor.ts:41
+Defined in: [TestcaseProcessor.ts:41](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L41)
 
 The logger to use
 
@@ -34,7 +34,7 @@ The logger to use
 
 > **tables**: `Record`\<`string`, `TableInterface`\>
 
-Defined in: TestcaseProcessor.ts:50
+Defined in: [TestcaseProcessor.ts:50](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L50)
 
 Stores all the tables by there name
 
@@ -44,7 +44,7 @@ Stores all the tables by there name
 
 > `optional` **writeMetaData**: `DataWriterFunctionField`
 
-Defined in: TestcaseProcessor.ts:44
+Defined in: [TestcaseProcessor.ts:44](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L44)
 
 A function to transfer the data from a Todo into the TestcaseData object
 
@@ -54,7 +54,7 @@ A function to transfer the data from a Todo into the TestcaseData object
 
 > **writer**: [`InterfaceWriter`](InterfaceWriter.md)[]
 
-Defined in: TestcaseProcessor.ts:35
+Defined in: [TestcaseProcessor.ts:35](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L35)
 
 All the writer used to write the data of the test cases
 
@@ -64,6 +64,6 @@ All the writer used to write the data of the test cases
 
 > `optional` **writeStaticData**: `DataWriterFunctionStatic`
 
-Defined in: TestcaseProcessor.ts:47
+Defined in: [TestcaseProcessor.ts:47](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L47)
 
 A function to transfer the data from a Todo into the TestcaseData object

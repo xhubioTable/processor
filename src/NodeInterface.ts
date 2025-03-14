@@ -2,7 +2,7 @@ import {
   MetaTestcase,
   TestcaseTodosInterface,
   TodoReferenceInterface
-} from '@tlink/model'
+} from '@xhubiotable/model'
 import { NodeTodoGeneratorInterface } from './NodeTodoGeneratorInterface'
 import { NodeTodoFieldInterface } from './NodeTodoFieldInterface'
 import { NodeTodoReferenceInterface } from './NodeTodoReferenceInterface'

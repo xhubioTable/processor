@@ -1,7 +1,7 @@
-import { MetaTable, TableInterface } from '@tlink/model'
+import { MetaTable, TableInterface } from '@xhubiotable/model'
 import { v4 as uuidv4 } from 'uuid'
 import { NodeInterface } from './NodeInterface'
-import { DataGeneratorRegistry } from '@tlink/data-generator'
+import { DataGeneratorRegistry } from '@xhubiotable/data-generator'
 
 /**
  * Options for initializing a Reference.

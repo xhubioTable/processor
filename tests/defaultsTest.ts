@@ -1,4 +1,4 @@
-import { getLoggerMemory } from '@tlink/logger'
+import { getLoggerMemory } from '@xhubiotable/logger'
 
 import {
   createDefaultGeneratorRegistry,

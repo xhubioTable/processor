@@ -1,12 +1,12 @@
-[**@tlink/processor**](../README.md)
+[**@xhubiotable/processor**](../README.md)
 
 ***
 
-[@tlink/processor](../globals.md) / SimpleArrayIgnoreFilterProcessor
+[@xhubiotable/processor](../globals.md) / SimpleArrayIgnoreFilterProcessor
 
 # Class: SimpleArrayIgnoreFilterProcessor
 
-Defined in: filter/SimpleArrayIgnoreFilterProcessor.ts:29
+Defined in: [filter/SimpleArrayIgnoreFilterProcessor.ts:29](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/filter/SimpleArrayIgnoreFilterProcessor.ts#L29)
 
 A filter processor that excludes test cases based on a filter expression.
 
@@ -26,7 +26,7 @@ is filtered out (i.e., the filter returns false). Otherwise, it returns true.
 
 > **new SimpleArrayIgnoreFilterProcessor**(`opts`): [`SimpleArrayIgnoreFilterProcessor`](SimpleArrayIgnoreFilterProcessor.md)
 
-Defined in: filter/SimpleArrayIgnoreFilterProcessor.ts:47
+Defined in: [filter/SimpleArrayIgnoreFilterProcessor.ts:47](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/filter/SimpleArrayIgnoreFilterProcessor.ts#L47)
 
 Constructs a new SimpleArrayIgnoreFilterProcessor.
 
@@ -48,7 +48,7 @@ Options for configuring the filter processor, including the name and delimiter.
 
 > **delimiter**: `string`
 
-Defined in: filter/SimpleArrayIgnoreFilterProcessor.ts:40
+Defined in: [filter/SimpleArrayIgnoreFilterProcessor.ts:40](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/filter/SimpleArrayIgnoreFilterProcessor.ts#L40)
 
 The delimiter used to split the filter expression.
 
@@ -58,7 +58,7 @@ The delimiter used to split the filter expression.
 
 > **name**: `string`
 
-Defined in: filter/SimpleArrayIgnoreFilterProcessor.ts:35
+Defined in: [filter/SimpleArrayIgnoreFilterProcessor.ts:35](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/filter/SimpleArrayIgnoreFilterProcessor.ts#L35)
 
 The name of this filter processor.
 
@@ -72,7 +72,7 @@ The name of this filter processor.
 
 > **filter**(`tags`, `expression`): `boolean`
 
-Defined in: filter/SimpleArrayIgnoreFilterProcessor.ts:64
+Defined in: [filter/SimpleArrayIgnoreFilterProcessor.ts:64](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/filter/SimpleArrayIgnoreFilterProcessor.ts#L64)
 
 Filters an array of tags using the provided expression.
 

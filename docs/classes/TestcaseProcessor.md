@@ -1,12 +1,12 @@
-[**@tlink/processor**](../README.md)
+[**@xhubiotable/processor**](../README.md)
 
 ***
 
-[@tlink/processor](../globals.md) / TestcaseProcessor
+[@xhubiotable/processor](../globals.md) / TestcaseProcessor
 
 # Class: TestcaseProcessor
 
-Defined in: TestcaseProcessor.ts:53
+Defined in: [TestcaseProcessor.ts:53](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L53)
 
 ## Implements
 
@@ -18,7 +18,7 @@ Defined in: TestcaseProcessor.ts:53
 
 > **new TestcaseProcessor**(`opts`): [`TestcaseProcessor`](TestcaseProcessor.md)
 
-Defined in: TestcaseProcessor.ts:74
+Defined in: [TestcaseProcessor.ts:74](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L74)
 
 #### Parameters
 
@@ -36,7 +36,7 @@ Defined in: TestcaseProcessor.ts:74
 
 > **filterProcessor**: `Map`\<`string`, [`FilterProcessorInterface`](../interfaces/FilterProcessorInterface.md)\>
 
-Defined in: TestcaseProcessor.ts:63
+Defined in: [TestcaseProcessor.ts:63](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L63)
 
 Stores all the filter processors by there name
 
@@ -46,7 +46,7 @@ Stores all the filter processors by there name
 
 > **generatorRegistry**: `DataGeneratorRegistry`
 
-Defined in: TestcaseProcessor.ts:66
+Defined in: [TestcaseProcessor.ts:66](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L66)
 
 The registry containing all the data generators
 
@@ -56,7 +56,7 @@ The registry containing all the data generators
 
 > **logger**: `LoggerInterface`
 
-Defined in: TestcaseProcessor.ts:60
+Defined in: [TestcaseProcessor.ts:60](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L60)
 
 ***
 
@@ -64,7 +64,7 @@ Defined in: TestcaseProcessor.ts:60
 
 > **tables**: `Record`\<`string`, `TableInterface`\> = `{}`
 
-Defined in: TestcaseProcessor.ts:69
+Defined in: [TestcaseProcessor.ts:69](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L69)
 
 Stores all the tables by there name
 
@@ -74,7 +74,7 @@ Stores all the tables by there name
 
 > **writeMetaData**: `DataWriterFunctionField` = `writeFieldData`
 
-Defined in: TestcaseProcessor.ts:55
+Defined in: [TestcaseProcessor.ts:55](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L55)
 
 A function to transfer the data from a Todo into the TestcaseData object
 
@@ -84,7 +84,7 @@ A function to transfer the data from a Todo into the TestcaseData object
 
 > **writer**: [`InterfaceWriter`](../interfaces/InterfaceWriter.md)[]
 
-Defined in: TestcaseProcessor.ts:72
+Defined in: [TestcaseProcessor.ts:72](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L72)
 
 All the writer used to write the data of the test cases
 
@@ -94,7 +94,7 @@ All the writer used to write the data of the test cases
 
 > **writeStaticData**: `DataWriterFunctionStatic`
 
-Defined in: TestcaseProcessor.ts:58
+Defined in: [TestcaseProcessor.ts:58](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L58)
 
 A function to transfer the data from a Todo into the TestcaseData object
 
@@ -104,7 +104,7 @@ A function to transfer the data from a Todo into the TestcaseData object
 
 > **addFilterProcessor**(`filterProcessor`): `void`
 
-Defined in: TestcaseProcessor.ts:123
+Defined in: [TestcaseProcessor.ts:123](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L123)
 
 Adds a new filterProcessor to the processor
 
@@ -126,7 +126,7 @@ A filterProcessor object
 
 > **addTables**(`tables`): `void`
 
-Defined in: TestcaseProcessor.ts:91
+Defined in: [TestcaseProcessor.ts:91](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L91)
 
 Adds all the given tables to the processor.
 
@@ -152,7 +152,7 @@ A list of tables
 
 > **clear**(): `void`
 
-Defined in: TestcaseProcessor.ts:115
+Defined in: [TestcaseProcessor.ts:115](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L115)
 
 Deletes the loaded tables
 and also the data of the generators
@@ -171,7 +171,7 @@ and also the data of the generators
 
 > **createNodeTree**(`testcaseDefinition`): `Promise`\<`NodeInterface`[]\>
 
-Defined in: TestcaseProcessor.ts:703
+Defined in: [TestcaseProcessor.ts:703](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L703)
 
 This method creates the node trees for one testcaseDefinition
 
@@ -195,7 +195,7 @@ The new nodes created
 
 > **getFilterProcessor**(`name`): `undefined` \| [`FilterProcessorInterface`](../interfaces/FilterProcessorInterface.md)
 
-Defined in: TestcaseProcessor.ts:138
+Defined in: [TestcaseProcessor.ts:138](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L138)
 
 Returns a filterProcessor with the given name
 
@@ -219,7 +219,7 @@ The filterProcessor with the given name or undefined if the processor does not e
 
 > **postProcessGenerators**(`testcaseData`): `Promise`\<`void`\>
 
-Defined in: TestcaseProcessor.ts:262
+Defined in: [TestcaseProcessor.ts:262](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L262)
 
 Calls the generator for post processing
 
@@ -243,7 +243,7 @@ True if the todo is fullfilled
 
 > **process**(): `Promise`\<`void`\>
 
-Defined in: TestcaseProcessor.ts:147
+Defined in: [TestcaseProcessor.ts:147](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L147)
 
 Processes all the tables currently loaded in the processor.
 
@@ -266,7 +266,7 @@ A promise that resolves when processing is complete.
 
 > **processTable**(`table`): `Promise`\<`void`\>
 
-Defined in: TestcaseProcessor.ts:193
+Defined in: [TestcaseProcessor.ts:193](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L193)
 
 Processes a single table
 
@@ -288,7 +288,7 @@ The table object to be executed
 
 > **processTestcase**(`testcaseDefinition`): `Promise`\<`TestcaseData`[]\>
 
-Defined in: TestcaseProcessor.ts:300
+Defined in: [TestcaseProcessor.ts:300](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/TestcaseProcessor.ts#L300)
 
 Processes a single testcase of a table. This method is called
 from the TableProcessor. This is the entry point for a single testcase.

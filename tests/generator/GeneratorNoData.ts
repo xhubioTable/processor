@@ -1,7 +1,7 @@
 import {
   DataGeneratorBase,
   DataGeneratorGenerateRequest
-} from '@tlink/data-generator'
+} from '@xhubiotable/data-generator'
 
 /**
  * This generator is only used for the process test.

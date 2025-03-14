@@ -6,17 +6,17 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
-import { DataGeneratorRegistry } from '@tlink/data-generator'
+import { DataGeneratorRegistry } from '@xhubiotable/data-generator'
 import { InterfaceWriter } from './InterfaceWriter'
 import {
   FileProcessor,
   ParserMatrix,
   ParserDecision,
   ParserSpecification
-} from '@tlink/file-processor'
+} from '@xhubiotable/file-processor'
 
-import { ImporterXlsx } from '@tlink/importer-xlsx'
-import { LoggerInterface } from '@tlink/logger'
+import { ImporterXlsx } from '@xhubiotable/importer-xlsx'
+import { LoggerInterface } from '@xhubiotable/logger'
 import { TestcaseDataInterface } from './TestcaseDataInterface'
 
 export function createDefaultGeneratorRegistry() {

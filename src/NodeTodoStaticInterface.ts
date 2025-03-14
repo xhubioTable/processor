@@ -1,4 +1,4 @@
-import { TodoStaticInterface } from '@tlink/model'
+import { TodoStaticInterface } from '@xhubiotable/model'
 import { NodeInterface } from './NodeInterface'
 
 /**

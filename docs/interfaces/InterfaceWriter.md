@@ -1,12 +1,12 @@
-[**@tlink/processor**](../README.md)
+[**@xhubiotable/processor**](../README.md)
 
 ***
 
-[@tlink/processor](../globals.md) / InterfaceWriter
+[@xhubiotable/processor](../globals.md) / InterfaceWriter
 
 # Interface: InterfaceWriter
 
-Defined in: InterfaceWriter.ts:11
+Defined in: [InterfaceWriter.ts:11](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/InterfaceWriter.ts#L11)
 
 Defines the interface for a writer used by the processor to output test case data.
 
@@ -20,7 +20,7 @@ writing the test case data during processing, and actions to execute after proce
 
 > **logger**: `LoggerInterface`
 
-Defined in: InterfaceWriter.ts:15
+Defined in: [InterfaceWriter.ts:15](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/InterfaceWriter.ts#L15)
 
 Logger instance used for logging writer operations.
 
@@ -30,7 +30,7 @@ Logger instance used for logging writer operations.
 
 > **after**(): `Promise`\<`void`\>
 
-Defined in: InterfaceWriter.ts:43
+Defined in: [InterfaceWriter.ts:43](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/InterfaceWriter.ts#L43)
 
 Method called after the last test case has been processed.
 
@@ -48,7 +48,7 @@ A promise that resolves when all finalization tasks are complete.
 
 > **before**(): `Promise`\<`void`\>
 
-Defined in: InterfaceWriter.ts:24
+Defined in: [InterfaceWriter.ts:24](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/InterfaceWriter.ts#L24)
 
 Method called before the first test case is processed.
 
@@ -66,7 +66,7 @@ A promise that resolves when the initialization is complete.
 
 > **write**(`testcaseData`): `Promise`\<`void`\>
 
-Defined in: InterfaceWriter.ts:34
+Defined in: [InterfaceWriter.ts:34](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/InterfaceWriter.ts#L34)
 
 Writes the test case data.
 

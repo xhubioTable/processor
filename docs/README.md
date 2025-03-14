@@ -1,4 +1,4 @@
-**@tlink/processor**
+**@xhubiotable/processor**
 
 ***
 
@@ -9,10 +9,7 @@ external components. It illustrates the order in which the processor
 executes its tasks, along with the flow of data between the processor,
 generators, and writers.
 
-<figure>
-<img src="images/processor/processorOverview.svg"
-alt="processorOverview" />
-</figure>
+![processorOverview](images/processor/processorOverview.svg)
 
 Understanding the Picture: \* The order of the arrows indicates the
 sequence in which the processor executes its operations. \* The
@@ -132,15 +129,9 @@ calling test case is duplicated.
 
 The following images illustrate the syntax of a reference command:
 
-<figure>
-<img src="images/processor/referencesSyntax.svg"
-alt="referencesSyntax" />
-</figure>
+![referencesSyntax](images/processor/referencesSyntax.svg)
 
-<figure>
-<img src="images/processor/referencesRangeSyntax.svg"
-alt="referencesRangeSyntax" />
-</figure>
+![referencesRangeSyntax](images/processor/referencesRangeSyntax.svg)
 
 A reference command generally follows this structure:
 
@@ -175,10 +166,7 @@ of the calling test case for each test case in the range.
 
 The following diagram illustrates how a range reference is resolved:
 
-<figure>
-<img src="images/processor/rangeReferenceSolved.svg"
-alt="rangeReferenceSolved" />
-</figure>
+![rangeReferenceSolved](images/processor/rangeReferenceSolved.svg)
 
 For example, consider test case "T1" in the table "Person" with three
 references:
@@ -220,10 +208,7 @@ mechanism is especially useful when a generator must provide consistent
 data (e.g., a person’s name, email, etc.) for different columns or rows
 within the same test case.
 
-<figure>
-<img src="images/processor/generator.png" alt="generator" />
-<figcaption>example from a decision table:</figcaption>
-</figure>
+![example from a decision table:](images/processor/generator.png)
 
 ## Generator Command Format
 

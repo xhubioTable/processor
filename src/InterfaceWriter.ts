@@ -1,4 +1,4 @@
-import { LoggerInterface } from '@tlink/logger'
+import { LoggerInterface } from '@xhubiotable/logger'
 import { TestcaseDataInterface } from './TestcaseDataInterface'
 
 /**

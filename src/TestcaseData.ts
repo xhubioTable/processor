@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 import { TestcaseDataInterface } from './TestcaseDataInterface'
 import { CallTreeInterface } from './CallTreeInterface'
-import { TodoGeneratorInterface } from '@tlink/model'
+import { TodoGeneratorInterface } from '@xhubiotable/model'
 
 /**
  * Options for initializing a TestcaseData instance.

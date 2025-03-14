@@ -1,12 +1,12 @@
-[**@tlink/processor**](../README.md)
+[**@xhubiotable/processor**](../README.md)
 
 ***
 
-[@tlink/processor](../globals.md) / SimpleArrayFilterProcessor
+[@xhubiotable/processor](../globals.md) / SimpleArrayFilterProcessor
 
 # Class: SimpleArrayFilterProcessor
 
-Defined in: filter/SimpleArrayFilterProcessor.ts:27
+Defined in: [filter/SimpleArrayFilterProcessor.ts:27](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/filter/SimpleArrayFilterProcessor.ts#L27)
 
 A filter processor that filters test cases based on an array of tags.
 
@@ -24,7 +24,7 @@ It is typically registered by name in the processor and referenced in the decisi
 
 > **new SimpleArrayFilterProcessor**(`opts`): [`SimpleArrayFilterProcessor`](SimpleArrayFilterProcessor.md)
 
-Defined in: filter/SimpleArrayFilterProcessor.ts:43
+Defined in: [filter/SimpleArrayFilterProcessor.ts:43](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/filter/SimpleArrayFilterProcessor.ts#L43)
 
 Constructs a new SimpleArrayFilterProcessor.
 
@@ -46,7 +46,7 @@ Options for configuring the filter processor, including the name and delimiter.
 
 > **delimiter**: `string`
 
-Defined in: filter/SimpleArrayFilterProcessor.ts:36
+Defined in: [filter/SimpleArrayFilterProcessor.ts:36](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/filter/SimpleArrayFilterProcessor.ts#L36)
 
 The delimiter used to split the filter expression.
 
@@ -56,7 +56,7 @@ The delimiter used to split the filter expression.
 
 > **name**: `string`
 
-Defined in: filter/SimpleArrayFilterProcessor.ts:31
+Defined in: [filter/SimpleArrayFilterProcessor.ts:31](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/filter/SimpleArrayFilterProcessor.ts#L31)
 
 The name of this filter processor.
 
@@ -70,7 +70,7 @@ The name of this filter processor.
 
 > **filter**(`tags`, `expression`): `boolean`
 
-Defined in: filter/SimpleArrayFilterProcessor.ts:59
+Defined in: [filter/SimpleArrayFilterProcessor.ts:59](https://github.com/xhubioTable/processor/blob/dd9cd7bf88ca5f4aa82c6b7600a42543cf46c289/src/filter/SimpleArrayFilterProcessor.ts#L59)
 
 Filters an array of tags using the provided expression.
 

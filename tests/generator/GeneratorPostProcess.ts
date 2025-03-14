@@ -1,8 +1,8 @@
 import {
   DataGeneratorBase,
   DataGeneratorGenerateRequest
-} from '@tlink/data-generator'
-import { TodoGeneratorInterface } from '@tlink/model'
+} from '@xhubiotable/data-generator'
+import { TodoGeneratorInterface } from '@xhubiotable/model'
 
 /**
  * This generator is only used for the process test.
